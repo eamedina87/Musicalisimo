@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+def libs = rootProject.ext.libraries
+def config = rootProject.ext.configuration
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName "${config.versionHigh}.${config.versionMiddle}.${config.versionLow}"
+        testInstrumentationRunner config.testInstrumentationRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //TESTING
+    testImplementation "junit:junit:${libs.jUnit}"
+    androidTestImplementation "androidx.test:runner:${libs.androidTestRunner}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${libs.espresso}"
+    //ANDROID
+    implementation "androidx.appcompat:appcompat:${libs.appCompat}"
+    //JSON PARSING
+    implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
+    // LOCAL - DATABASE
+    implementation "androidx.room:room-runtime:${libs.room}"
+    implementation "androidx.room:room-ktx:${libs.room}"
+    kapt "androidx.room:room-compiler:${libs.room}"
+    //REMOTE - API
+    implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${libs.retrofitCoroutines}"
+}

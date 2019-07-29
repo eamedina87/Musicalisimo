@@ -6,22 +6,22 @@ def libs = rootProject.ext.libraries
 def config = rootProject.ext.configuration
 
 android {
-    compileSdkVersion 28
-
-
+    compileSdkVersion config.compileSdkVersion
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName "${config.versionHigh}.${config.versionMiddle}.${config.versionLow}"
+        testInstrumentationRunner config.testInstrumentationRunner
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

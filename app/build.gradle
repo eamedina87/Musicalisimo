@@ -42,7 +42,12 @@ android {
 }
 
 dependencies {
+    implementation project(":data")
+    implementation project(":domain")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //ANNOTATIONS
+    //ANNOTATIONS
+    implementation group: 'javax.inject', name: 'javax.inject', version: '1'
     //TESTING - UNIT
     testImplementation "junit:junit:${libs.jUnit}"
     testImplementation "org.robolectric:robolectric:${libs.robolectric}"

@@ -25,7 +25,7 @@ object LastFmResponses {
                      val tracks: Tracks, val tags:Tags, val wiki:Wiki)
     data class Tracks(val track:Array<Track>)
     data class Track(val name: String, val url: String, val duration: Int,
-                     @Json(name="@attr") val attr: Map<String, String>,
+                     @SerializedName("@attr") val attr: Map<String, String>,
                      val streamable: Map<String, String>,
                      val artist: Artist)
     data class Tags(val tag:Array<Tag>)

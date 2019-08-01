@@ -34,7 +34,7 @@ interface LastFmApi {
         @Query(LastFmApiConstants.param_id) albumId: String,
         @Query(LastFmApiConstants.param_api_key) apiKey: String,
         @Query(LastFmApiConstants.param_format) format: String = LastFmApiConstants.param_format_json,
-        @Query(LastFmApiConstants.param_lang) limit: String
+        @Query(LastFmApiConstants.param_lang) lang: String
     ) : Deferred<Response<LastFmResponses.AlbumInfoResponse>>
 
 }

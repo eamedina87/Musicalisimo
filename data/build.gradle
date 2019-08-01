@@ -35,8 +35,12 @@ dependencies {
     testImplementation "junit:junit:${libs.jUnit}"
     testImplementation "io.mockk:mockk:${libs.mockk}"
     testImplementation "com.google.truth:truth:${libs.truth}"
+    androidTestImplementation "io.mockk:mockk:${libs.mockk}"
+    androidTestImplementation "com.google.truth:truth:${libs.truth}"
     androidTestImplementation "androidx.test:runner:${libs.androidTestRunner}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${libs.espresso}"
+    androidTestImplementation "androidx.test.ext:junit-ktx:${libs.jUnitKotlin}"
+    androidTestImplementation "android.arch.core:core-testing:${libs.archTesting}"
     //ANDROID
     implementation "androidx.appcompat:appcompat:${libs.appCompat}"
     implementation "androidx.core:core-ktx:${libs.ktxCore}"

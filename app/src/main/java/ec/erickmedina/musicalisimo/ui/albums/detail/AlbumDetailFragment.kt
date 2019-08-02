@@ -16,11 +16,6 @@ class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
         setHasOptionsMenu(true)
     }
 
-    override fun onPause() {
-        super.onPause()
-        setActivityButtonUp(false)
-    }
-
     override val mViewModel: BaseViewModel
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
 

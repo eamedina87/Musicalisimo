@@ -13,7 +13,8 @@ class AlbumListFragment : BaseFragment(), AlbumDetailContract.View {
 
     override fun getLayoutId(): Int = R.layout.fragment_album_list
 
-    val navController by lazy { findNavController() }
+    val navFragment by lazy { getBaseActivity().supportFragmentManager.findFragmentById(R.id.navigation) }
+    val mustShowUp by lazy { navFragment?.childFragmentManager?.backStackEntryCount!! > 1 }
 
     override fun initView() {
         detail_button.setOnClickListener {
@@ -28,11 +29,7 @@ class AlbumListFragment : BaseFragment(), AlbumDetailContract.View {
 
     override fun onResume() {
         super.onResume()
-        if (navController.graph.startDestination != navController.currentDestination?.id) {
-            //Comes from search -> display up button
-            setHasOptionsMenu(true)
-            setActivityButtonUp(true)
-        }
+        checkNavigateUp()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -44,6 +41,11 @@ class AlbumListFragment : BaseFragment(), AlbumDetailContract.View {
 
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun checkNavigateUp() {
+        setHasOptionsMenu(mustShowUp)
+        setActivityButtonUp(mustShowUp)
     }
 
 }

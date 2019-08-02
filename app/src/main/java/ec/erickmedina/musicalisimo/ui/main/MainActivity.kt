@@ -15,6 +15,7 @@ class MainActivity : BaseActivity(), MainContract.View {
     override fun initView() {
         bottomNavigation.setupWithNavController(findNavController(R.id.navigation))
         setSupportActionBar(toolbar)
+        supportActionBar?.setIcon(R.drawable.ic_music)
     }
 
     override val mViewModel: BaseViewModel

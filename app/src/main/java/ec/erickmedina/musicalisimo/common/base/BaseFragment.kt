@@ -33,4 +33,13 @@ abstract class BaseFragment : Fragment() {
         initView()
     }
 
+    protected fun setActivityTitle(title: String) {
+        getBaseActivity().setActivityTitle(title)
+    }
+
+    protected fun setActivityButtonUp(show: Boolean) {
+        getBaseActivity().displayHomeAsUpButton(show)
+    }
+
+
 }

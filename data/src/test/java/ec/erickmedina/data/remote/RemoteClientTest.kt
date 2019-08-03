@@ -1,18 +1,16 @@
 package ec.erickmedina.data.remote
 
 import com.google.common.truth.Truth.assertThat
-import com.google.gson.Gson
 import ec.erickmedina.data.entity.LastFmResponses
 import ec.erickmedina.data.remote.client.LastFmApi
 import ec.erickmedina.data.remote.client.RemoteClient
+import ec.erickmedina.data.utils.UtilsAssertion
 import ec.erickmedina.data.utils.UtilsMock
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
-import retrofit2.Response
 
 class RemoteClientTest {
 
@@ -20,10 +18,7 @@ class RemoteClientTest {
     fun `get artist search result successfully`() {
         val mockedApi = mockk<LastFmApi> {
             every { searchArtistAsync(any(), any(), any(), any(), any(), any()) } answers {
-                val json = UtilsMock.getSearchArtistResponseJson()
-                val data = Gson().fromJson(json, LastFmResponses.SearchArtistResponse::class.java)
-                val response = Response.success(data)
-                CompletableDeferred(response)
+                UtilsMock.getSearchArtistDeferredResponse()
             }
         }
         val mockedRemoteClient = mockk<RemoteClient> {
@@ -40,15 +35,8 @@ class RemoteClientTest {
             assertThat(bodyResponse.results.artistmatches.artist).isNotNull()
             val artistList = bodyResponse.results.artistmatches.artist
             assertThat(artistList).isNotEmpty()
-            with(artistList[0]) {
-                assertThat(name).isNotEmpty()
-                assertThat(mbid).isNotEmpty()
-                assertThat(url).isNotEmpty()
-                assertThat(listeners).isAtLeast(0)
-                assertThat(streamable).isAtLeast(0)
-                assertThat(image[0]).isNotNull()
-                assertThat(image[0].text).isNotEmpty()
-                assertThat(image[0].size).isNotEmpty()
+            artistList.forEach {
+                UtilsAssertion.assertArtist(it)
             }
         }
     }
@@ -57,10 +45,7 @@ class RemoteClientTest {
     fun `get top albums result successfully`() {
         val mockedApi = mockk<LastFmApi> {
             every { getTopAlbumsForArtistIdAsync(any(), any(), any(), any(), any(), any()) } answers {
-                val json = UtilsMock.getTopAlbumsResponseJson()
-                val data = Gson().fromJson(json, LastFmResponses.TopAlbumResponse::class.java)
-                val response = Response.success(data)
-                CompletableDeferred(response)
+                UtilsMock.getTopAlbumsDeferredResponse()
             }
         }
         val mockedRemoteClient = mockk<RemoteClient> {
@@ -76,18 +61,8 @@ class RemoteClientTest {
             assertThat(bodyResponse.topalbums.album).isNotNull()
             val albumList = bodyResponse.topalbums.album
             assertThat(albumList).isNotEmpty()
-            with(albumList[0]) {
-                assertThat(name).isNotEmpty()
-                assertThat(playcount).isAtLeast(0)
-                assertThat(mbid).isNotEmpty()
-                assertThat(url).isNotEmpty()
-                assertThat(artist).isNotNull()
-                assertThat(artist.name).isNotEmpty()
-                assertThat(artist.mbid).isNotEmpty()
-                assertThat(artist.url).isNotEmpty()
-                assertThat(image[0]).isNotNull()
-                assertThat(image[0].text).isNotEmpty()
-                assertThat(image[0].size).isNotEmpty()
+            albumList.forEach {
+                UtilsAssertion.assertTopAlbum(it)
             }
         }
     }
@@ -96,10 +71,7 @@ class RemoteClientTest {
     fun `get album info result successfully`() {
         val mockedApi = mockk<LastFmApi> {
             every { getAlbumInfoForIdAsync(any(), any(), any(), any(), any()) } answers {
-                val json = UtilsMock.getAlbumInfoResponseJson()
-                val data = Gson().fromJson(json, LastFmResponses.AlbumInfoResponse::class.java)
-                val response = Response.success(data)
-                CompletableDeferred(response)
+                UtilsMock.getAlbumInfoDeferredResponse()
             }
         }
         val mockedRemoteClient = mockk<RemoteClient> {
@@ -112,41 +84,7 @@ class RemoteClientTest {
             assert(response.body() != null)
             val bodyResponse = response.body()!!
             assertThat(bodyResponse.album).isNotNull()
-            with(bodyResponse.album) {
-                assertThat(name).isNotEmpty()
-                assertThat(artist).isNotEmpty()
-                assertThat(mbid).isNotEmpty()
-                assertThat(url).isNotEmpty()
-                assertThat(listeners).isAtLeast(0)
-                assertThat(playcount).isAtLeast(0)
-                assertThat(image[0]).isNotNull()
-                assertThat(image[0].text).isNotEmpty()
-                assertThat(image[0].size).isNotEmpty()
-                assertThat(tracks).isNotNull()
-                assertThat(tracks.track).isNotEmpty()
-                assertThat(tracks.track[0]).isNotNull()
-                with(tracks.track[0]) {
-                    assertThat(name).isNotEmpty()
-                    assertThat(artist).isNotNull()
-                    assertThat(mbid).isNotEmpty()
-                    assertThat(url).isNotEmpty()
-                    assertThat(attr).isNotEmpty()
-                }
-                assertThat(tags).isNotNull()
-                assertThat(tags.tag).isNotNull()
-                assertThat(tags.tag[0]).isNotNull()
-                with(tags.tag[0]) {
-                    assertThat(name).isNotEmpty()
-                    assertThat(url).isNotEmpty()
-                }
-                assertThat(wiki).isNotNull()
-                with(wiki) {
-                    assertThat(content).isNotEmpty()
-                    assertThat(published).isNotEmpty()
-                    assertThat(summary).isNotEmpty()
-                }
-            }
-
+            UtilsAssertion.assertAlbum(bodyResponse.album)
         }
     }
 

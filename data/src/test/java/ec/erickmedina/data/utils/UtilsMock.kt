@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import ec.erickmedina.data.entity.LastFmResponses
 import ec.erickmedina.data.local.database.entity.DatabaseEntities
+import ec.erickmedina.data.util.mapToModel
+import ec.erickmedina.domain.models.AlbumModel
 import kotlinx.coroutines.CompletableDeferred
 import retrofit2.Response
 import java.util.*
@@ -14,24 +16,36 @@ class UtilsMock {
     companion object {
 
         fun getSearchArtistDeferredResponse(): CompletableDeferred<Response<LastFmResponses.SearchArtistResponse>> {
-            val json = getSearchArtistResponseJson()
-            val data = Gson().fromJson(json, LastFmResponses.SearchArtistResponse::class.java)
+            val data = getSearchArtistResponseEntity()
             val response = Response.success(data)
             return CompletableDeferred(response)
         }
 
         fun getTopAlbumsDeferredResponse(): CompletableDeferred<Response<LastFmResponses.TopAlbumResponse>> {
-            val json = getTopAlbumsResponseJson()
-            val data = Gson().fromJson(json, LastFmResponses.TopAlbumResponse::class.java)
+            val data = getTopAlbumResponseEntity()
             val response = Response.success(data)
             return CompletableDeferred(response)
         }
 
         fun getAlbumInfoDeferredResponse(): CompletableDeferred<Response<LastFmResponses.AlbumInfoResponse>> {
-            val json = getAlbumInfoResponseJson()
-            val data = Gson().fromJson(json, LastFmResponses.AlbumInfoResponse::class.java)
+            val data = getAlbumInfoResponseEntity()
             val response = Response.success(data)
             return CompletableDeferred(response)
+        }
+
+        fun getRemoteSourceArtistMatches() : LastFmResponses.SearchArtistMatches {
+            val data = getSearchArtistResponseEntity()
+            return data.results.artistmatches
+        }
+
+        fun getRemoteSourceTopAlbums(): LastFmResponses.TopAlbums {
+            val data = getTopAlbumResponseEntity()
+            return data.topalbums
+        }
+
+        fun getRemoteSourceAlbumInfo(): LastFmResponses.Album {
+            val data = getAlbumInfoResponseEntity()
+            return data.album
         }
 
         fun getMockedDatabaseAlbumList() : List<DatabaseEntities.AlbumEntity> {
@@ -41,6 +55,15 @@ class UtilsMock {
         fun getMockedLiveDatabaseAlbumList() : LiveData<List<DatabaseEntities.AlbumEntity>> {
             return MutableLiveData(getMockedDatabaseAlbumList())
         }
+
+        fun getAlbumThreeModel(): AlbumModel =
+            getAlbumThree().mapToModel()
+
+        fun getAlbumTwoModel(): AlbumModel =
+            getAlbumTwo().mapToModel()
+
+        fun getAlbumOneModel(): AlbumModel =
+            getAlbumOne().mapToModel()
 
         fun getAlbumThree(): DatabaseEntities.AlbumEntity =
             getAlbumWithName("album_three.json")
@@ -77,6 +100,25 @@ class UtilsMock {
             val data = Gson().fromJson(json, LastFmResponses.AlbumInfoResponse::class.java)
             return DatabaseEntities.AlbumEntity(data.album)
         }
+
+        private fun getSearchArtistResponseEntity(): LastFmResponses.SearchArtistResponse {
+            val json = getSearchArtistResponseJson()
+            val data = Gson().fromJson(json, LastFmResponses.SearchArtistResponse::class.java)
+            return data
+        }
+
+        private fun getAlbumInfoResponseEntity(): LastFmResponses.AlbumInfoResponse {
+            val json = getAlbumInfoResponseJson()
+            val data = Gson().fromJson(json, LastFmResponses.AlbumInfoResponse::class.java)
+            return data
+        }
+
+        private fun getTopAlbumResponseEntity(): LastFmResponses.TopAlbumResponse {
+            val json = getTopAlbumsResponseJson()
+            val data = Gson().fromJson(json, LastFmResponses.TopAlbumResponse::class.java)
+            return data
+        }
+
 
     }
 

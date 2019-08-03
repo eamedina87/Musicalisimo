@@ -48,7 +48,7 @@ class RemoteDataSourceTest {
             assertThat(matches).isNotNull()
             assertThat(matches.artist).isNotEmpty()
             matches.artist.forEach {
-                UtilsAssertion.assertArtist(it)
+                UtilsAssertion.assertArtistEntity(it)
             }
         }
     }
@@ -88,7 +88,7 @@ class RemoteDataSourceTest {
             assertThat(topAlbums).isNotNull()
             assertThat(topAlbums.album).isNotEmpty()
             topAlbums.album.forEach {
-                UtilsAssertion.assertTopAlbum(it)
+                UtilsAssertion.assertTopAlbumEntity(it)
             }
         }
     }
@@ -126,7 +126,7 @@ class RemoteDataSourceTest {
                 api.getAlbumInfoForIdAsync(any(), any(), any(), any(), any())
             }
             assertThat(album).isNotNull()
-            UtilsAssertion.assertAlbum(album)
+            UtilsAssertion.assertAlbumEntity(album)
         }
     }
 

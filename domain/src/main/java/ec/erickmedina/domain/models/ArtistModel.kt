@@ -1,4 +1,7 @@
 package ec.erickmedina.domain.models
 
-class ArtistModel {
-}
+data class ArtistModel (
+    val name: String,
+    val listeners: Long,
+    val id: String,
+    val images: ArrayList<ImageModel>)

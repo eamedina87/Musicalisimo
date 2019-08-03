@@ -1,13 +1,16 @@
 package ec.erickmedina.data.utils
 
 import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import ec.erickmedina.data.entity.LastFmResponses
+import ec.erickmedina.domain.models.AlbumModel
+import ec.erickmedina.domain.models.ArtistModel
 
 class UtilsAssertion {
 
     companion object {
 
-        fun assertArtist(artist: LastFmResponses.Artist) {
+        fun assertArtistEntity(artist: LastFmResponses.Artist) {
             with(artist) {
                 Truth.assertThat(name).isNotEmpty()
                 Truth.assertThat(url).isNotEmpty()
@@ -22,7 +25,7 @@ class UtilsAssertion {
             }
         }
 
-        fun assertTopAlbum(album: LastFmResponses.TopAlbum) {
+        fun assertTopAlbumEntity(album: LastFmResponses.TopAlbum) {
             with(album) {
                 Truth.assertThat(name).isNotEmpty()
                 Truth.assertThat(playcount).isAtLeast(0)
@@ -39,7 +42,7 @@ class UtilsAssertion {
             }
         }
 
-        fun assertAlbum(album: LastFmResponses.Album) {
+        fun assertAlbumEntity(album: LastFmResponses.Album) {
             with(album) {
                 Truth.assertThat(name).isNotEmpty()
                 Truth.assertThat(artist).isNotEmpty()
@@ -79,6 +82,38 @@ class UtilsAssertion {
                     Truth.assertThat(content).isNotEmpty()
                     Truth.assertThat(published).isNotEmpty()
                     Truth.assertThat(summary).isNotEmpty()
+                }
+            }
+        }
+
+        fun assertAlbumModel(album: AlbumModel) {
+            with(album) {
+                assertThat(name).isNotEmpty()
+                assertThat(artist).isNotEmpty()
+                assertThat(localId).isNotNull()
+                assertThat(remoteId).isNotNull()
+                assertThat(images).isNotNull()
+                assertThat(tracks).isNotNull()
+                assertThat(tags).isNotNull()
+                assertThat(listeners).isAtLeast(0)
+                assertThat(playcount).isAtLeast(0)
+                assertThat(summary).isNotNull()
+                assertThat(publication).isNotNull()
+                assertThat(description).isNotNull()
+            }
+        }
+
+        fun assertArtistModel(artist: ArtistModel) {
+            with(artist) {
+                assertThat(id).isNotEmpty()
+                assertThat(listeners).isAtLeast(0)
+                assertThat(name).isNotEmpty()
+                assertThat(images).isNotNull()
+                images.forEach {
+                    with(it) {
+                        assertThat(url).isNotEmpty()
+                        assertThat(size).isNotEmpty()
+                    }
                 }
             }
         }

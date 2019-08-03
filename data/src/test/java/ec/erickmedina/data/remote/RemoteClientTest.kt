@@ -1,7 +1,6 @@
 package ec.erickmedina.data.remote
 
 import com.google.common.truth.Truth.assertThat
-import ec.erickmedina.data.entity.LastFmResponses
 import ec.erickmedina.data.remote.client.LastFmApi
 import ec.erickmedina.data.remote.client.RemoteClient
 import ec.erickmedina.data.utils.UtilsAssertion
@@ -36,7 +35,7 @@ class RemoteClientTest {
             val artistList = bodyResponse.results.artistmatches.artist
             assertThat(artistList).isNotEmpty()
             artistList.forEach {
-                UtilsAssertion.assertArtist(it)
+                UtilsAssertion.assertArtistEntity(it)
             }
         }
     }
@@ -62,7 +61,7 @@ class RemoteClientTest {
             val albumList = bodyResponse.topalbums.album
             assertThat(albumList).isNotEmpty()
             albumList.forEach {
-                UtilsAssertion.assertTopAlbum(it)
+                UtilsAssertion.assertTopAlbumEntity(it)
             }
         }
     }
@@ -84,7 +83,7 @@ class RemoteClientTest {
             assert(response.body() != null)
             val bodyResponse = response.body()!!
             assertThat(bodyResponse.album).isNotNull()
-            UtilsAssertion.assertAlbum(bodyResponse.album)
+            UtilsAssertion.assertAlbumEntity(bodyResponse.album)
         }
     }
 

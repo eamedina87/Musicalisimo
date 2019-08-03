@@ -22,6 +22,7 @@ ext {
             espresso : "3.2.0",
             truth: "1.0",
             archTesting : "2.0.1",
+            lifecycleExtensions : "2.2.0-alpha02",
             //JSON PARSING
             moshi: "1.8.0",
             gson: "2.8.5",

@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import ec.erickmedina.data.entity.LastFmResponses
 import ec.erickmedina.data.remote.client.LastFmApi
 import ec.erickmedina.data.remote.client.RemoteClient
-import ec.erickmedina.data.util.UtilsMock
+import ec.erickmedina.data.utils.UtilsMock
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

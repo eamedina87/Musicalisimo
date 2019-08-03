@@ -37,6 +37,7 @@ dependencies {
     testImplementation "junit:junit:${libs.jUnit}"
     testImplementation "io.mockk:mockk:${libs.mockk}"
     testImplementation "com.google.truth:truth:${libs.truth}"
+    testImplementation "android.arch.core:core-testing:${libs.archTesting}"
     androidTestImplementation "io.mockk:mockk:${libs.mockk}"
     androidTestImplementation "com.google.truth:truth:${libs.truth}"
     androidTestImplementation "androidx.test:runner:${libs.androidTestRunner}"
@@ -47,6 +48,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${libs.appCompat}"
     implementation "androidx.core:core-ktx:${libs.ktxCore}"
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${libs.lifecycleExtensions}"
     //JSON PARSING
     //implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
     implementation "com.google.code.gson:gson:${libs.gson}"

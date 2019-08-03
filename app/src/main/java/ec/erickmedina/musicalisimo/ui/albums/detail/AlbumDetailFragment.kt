@@ -1,10 +1,10 @@
-package ec.erickmedina.musicalisimo.ui.albums.list
+package ec.erickmedina.musicalisimo.ui.albums.detail
 
 import android.view.MenuItem
-import androidx.navigation.fragment.findNavController
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseFragment
 import ec.erickmedina.musicalisimo.common.base.BaseViewModel
+import ec.erickmedina.musicalisimo.ui.albums.list.AlbumDetailContract
 
 class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
 

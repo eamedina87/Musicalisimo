@@ -1,0 +1,455 @@
+{
+  "album": {
+    "name": "Barrio Fino",
+    "artist": "Daddy Yankee",
+    "mbid": "0b0e84e9-a01f-41bc-bc5b-4d0322983076",
+    "url": "https://www.last.fm/music/Daddy+Yankee/Barrio+Fino",
+    "image": [
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/34s/1926aeb8879047a89e59578cdb143ddb.png",
+        "size": "small"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/64s/1926aeb8879047a89e59578cdb143ddb.png",
+        "size": "medium"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/174s/1926aeb8879047a89e59578cdb143ddb.png",
+        "size": "large"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/1926aeb8879047a89e59578cdb143ddb.png",
+        "size": "extralarge"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/1926aeb8879047a89e59578cdb143ddb.png",
+        "size": "mega"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/1926aeb8879047a89e59578cdb143ddb.png",
+        "size": ""
+      }
+    ],
+    "listeners": "196746",
+    "playcount": "1181483",
+    "tracks": {
+      "track": [
+        {
+          "name": "Intro",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Intro",
+          "duration": "79",
+          "@attr": {
+            "rank": "1"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "King Daddy",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/King+Daddy",
+          "duration": "151",
+          "@attr": {
+            "rank": "2"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Dale Caliente",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Dale+Caliente",
+          "duration": "197",
+          "@attr": {
+            "rank": "3"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "No Me Dejes Solo",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/No+Me+Dejes+Solo",
+          "duration": "97",
+          "@attr": {
+            "rank": "4"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Gasolina",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Gasolina",
+          "duration": "192",
+          "@attr": {
+            "rank": "5"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Like You",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Like+You",
+          "duration": "202",
+          "@attr": {
+            "rank": "6"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "El Muro",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/El+Muro",
+          "duration": "179",
+          "@attr": {
+            "rank": "7"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Lo Que Pasó, Pasó",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Lo+Que+Pas%C3%B3,+Pas%C3%B3",
+          "duration": "210",
+          "@attr": {
+            "rank": "8"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Tu Principe",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Tu+Principe",
+          "duration": "205",
+          "@attr": {
+            "rank": "9"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Cuentame",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Cuentame",
+          "duration": "155",
+          "@attr": {
+            "rank": "10"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Santifica Tus Escapularios",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Santifica+Tus+Escapularios",
+          "duration": "199",
+          "@attr": {
+            "rank": "11"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Sabor A Melao",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Sabor+A+Melao",
+          "duration": "223",
+          "@attr": {
+            "rank": "12"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "El Empuje",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/El+Empuje",
+          "duration": "203",
+          "@attr": {
+            "rank": "13"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Que Vas A Hacer?",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Que+Vas+A+Hacer%3F",
+          "duration": "199",
+          "@attr": {
+            "rank": "14"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Salud Y Vida",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Salud+Y+Vida",
+          "duration": "206",
+          "@attr": {
+            "rank": "15"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Intermedio \"Gavilan\"",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Intermedio+%22Gavilan%22",
+          "duration": "72",
+          "@attr": {
+            "rank": "16"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Corazones",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Corazones",
+          "duration": "211",
+          "@attr": {
+            "rank": "17"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Golpe De Estado",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Golpe+De+Estado",
+          "duration": "186",
+          "@attr": {
+            "rank": "18"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "2 Mujeres",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/2+Mujeres",
+          "duration": "189",
+          "@attr": {
+            "rank": "19"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Saber Su nombre",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Saber+Su+nombre",
+          "duration": "218",
+          "@attr": {
+            "rank": "20"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Outro",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Outro",
+          "duration": "59",
+          "@attr": {
+            "rank": "21"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Sabor a Melao (en Salsa)",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Sabor+a+Melao+(en+Salsa)",
+          "duration": "219",
+          "@attr": {
+            "rank": "23"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        },
+        {
+          "name": "Lo que Pasó, Pasó (en Bachata)",
+          "url": "https://www.last.fm/music/Daddy+Yankee/_/Lo+que+Pas%C3%B3,+Pas%C3%B3+(en+Bachata)",
+          "duration": "227",
+          "@attr": {
+            "rank": "24"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "Daddy Yankee",
+            "mbid": "2f522f5c-111c-4ce8-8bd0-d82e97c227ad",
+            "url": "https://www.last.fm/music/Daddy+Yankee"
+          }
+        }
+      ]
+    },
+    "tags": {
+      "tag": [
+        {
+          "name": "Reggaeton",
+          "url": "https://www.last.fm/tag/Reggaeton"
+        },
+        {
+          "name": "reggae",
+          "url": "https://www.last.fm/tag/reggae"
+        },
+        {
+          "name": "spanish",
+          "url": "https://www.last.fm/tag/spanish"
+        },
+        {
+          "name": "Daddy Yankee",
+          "url": "https://www.last.fm/tag/Daddy+Yankee"
+        },
+        {
+          "name": "hip hop",
+          "url": "https://www.last.fm/tag/hip+hop"
+        }
+      ]
+    }
+  }
+}

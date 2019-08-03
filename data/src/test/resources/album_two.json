@@ -1,0 +1,319 @@
+{
+  "album": {
+    "name": "La Familia",
+    "artist": "J Balvin",
+    "mbid": "28a16fdd-292d-4b89-a6ef-75375a07ed8e",
+    "url": "https://www.last.fm/music/J+Balvin/La+Familia",
+    "image": [
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/34s/3efd9f80128f453dc55c69310ebd8a89.png",
+        "size": "small"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/64s/3efd9f80128f453dc55c69310ebd8a89.png",
+        "size": "medium"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/174s/3efd9f80128f453dc55c69310ebd8a89.png",
+        "size": "large"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/3efd9f80128f453dc55c69310ebd8a89.png",
+        "size": "extralarge"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/3efd9f80128f453dc55c69310ebd8a89.png",
+        "size": "mega"
+      },
+      {
+        "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/3efd9f80128f453dc55c69310ebd8a89.png",
+        "size": ""
+      }
+    ],
+    "listeners": "39643",
+    "playcount": "340725",
+    "tracks": {
+      "track": [
+        {
+          "name": "Sola",
+          "url": "https://www.last.fm/music/J+Balvin/_/Sola",
+          "duration": "227",
+          "@attr": {
+            "rank": "1"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "La Venganza",
+          "url": "https://www.last.fm/music/J+Balvin/_/La+Venganza",
+          "duration": "206",
+          "@attr": {
+            "rank": "2"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Déjate Llevar",
+          "url": "https://www.last.fm/music/J+Balvin/_/D%C3%A9jate+Llevar",
+          "duration": "190",
+          "@attr": {
+            "rank": "3"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Mil Fantasías",
+          "url": "https://www.last.fm/music/J+Balvin/_/Mil+Fantas%C3%ADas",
+          "duration": "221",
+          "@attr": {
+            "rank": "4"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "6 AM",
+          "url": "https://www.last.fm/music/J+Balvin/_/6+AM",
+          "duration": "242",
+          "@attr": {
+            "rank": "5"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Lose Control",
+          "url": "https://www.last.fm/music/J+Balvin/_/Lose+Control",
+          "duration": "293",
+          "@attr": {
+            "rank": "6"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Eras Así",
+          "url": "https://www.last.fm/music/J+Balvin/_/Eras+As%C3%AD",
+          "duration": "228",
+          "@attr": {
+            "rank": "7"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "What a Creation",
+          "url": "https://www.last.fm/music/J+Balvin/_/What+a+Creation",
+          "duration": "148",
+          "@attr": {
+            "rank": "8"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Desnúdate",
+          "url": "https://www.last.fm/music/J+Balvin/_/Desn%C3%BAdate",
+          "duration": "223",
+          "@attr": {
+            "rank": "9"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Imaginándote",
+          "url": "https://www.last.fm/music/J+Balvin/_/Imagin%C3%A1ndote",
+          "duration": "257",
+          "@attr": {
+            "rank": "10"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Bajo la Luna",
+          "url": "https://www.last.fm/music/J+Balvin/_/Bajo+la+Luna",
+          "duration": "215",
+          "@attr": {
+            "rank": "11"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Live In Stereo",
+          "url": "https://www.last.fm/music/J+Balvin/_/Live+In+Stereo",
+          "duration": "210",
+          "@attr": {
+            "rank": "12"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Porque Tu",
+          "url": "https://www.last.fm/music/J+Balvin/_/Porque+Tu",
+          "duration": "176",
+          "@attr": {
+            "rank": "13"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Tranquila",
+          "url": "https://www.last.fm/music/J+Balvin/_/Tranquila",
+          "duration": "244",
+          "@attr": {
+            "rank": "14"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        },
+        {
+          "name": "Yo Te Lo Dije",
+          "url": "https://www.last.fm/music/J+Balvin/_/Yo+Te+Lo+Dije",
+          "duration": "220",
+          "@attr": {
+            "rank": "15"
+          },
+          "streamable": {
+            "#text": "0",
+            "fulltrack": "0"
+          },
+          "artist": {
+            "name": "J Balvin",
+            "mbid": "5bdeb32d-56a5-4b6d-a768-264101fa0a0a",
+            "url": "https://www.last.fm/music/J+Balvin"
+          }
+        }
+      ]
+    },
+    "tags": {
+      "tag": [
+        {
+          "name": "black metal",
+          "url": "https://www.last.fm/tag/black+metal"
+        },
+        {
+          "name": "bullshit",
+          "url": "https://www.last.fm/tag/bullshit"
+        },
+        {
+          "name": "Officially Shit",
+          "url": "https://www.last.fm/tag/Officially+Shit"
+        },
+        {
+          "name": "mierda",
+          "url": "https://www.last.fm/tag/mierda"
+        },
+        {
+          "name": "hip hop",
+          "url": "https://www.last.fm/tag/hip+hop"
+        }
+      ]
+    }
+  }
+}

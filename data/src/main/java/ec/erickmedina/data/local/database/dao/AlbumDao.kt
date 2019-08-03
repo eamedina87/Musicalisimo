@@ -16,7 +16,7 @@ interface AlbumDao {
     fun insertAlbum(album: DatabaseEntities.AlbumEntity):Long
 
     @Delete
-    fun deleteAlbum(album: DatabaseEntities.AlbumEntity)
+    fun deleteAlbum(album: DatabaseEntities.AlbumEntity):Int
 
     @Query("Select * from albumJson order by id")
     fun getAllAlbums():LiveData<List<DatabaseEntities.AlbumEntity>>

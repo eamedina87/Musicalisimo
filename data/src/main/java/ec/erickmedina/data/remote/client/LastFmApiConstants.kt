@@ -1,4 +1,4 @@
-package ec.erickmedina.data.remote
+package ec.erickmedina.data.remote.client
 
 class LastFmApiConstants {
     companion object {

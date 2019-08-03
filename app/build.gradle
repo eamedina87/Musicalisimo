@@ -20,7 +20,6 @@ android {
         testInstrumentationRunner config.testInstrumentationRunner
 
         //CONSTANTS
-        buildConfigField "String", "API_KEY", project.property('LAST_FM_API_KEY')
         buildConfigField "String", "API_URL", project.property('LAST_FM_ROOT_URL')
 
     }

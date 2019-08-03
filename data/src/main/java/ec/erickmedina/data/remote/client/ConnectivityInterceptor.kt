@@ -1,4 +1,4 @@
-package ec.erickmedina.data.remote
+package ec.erickmedina.data.remote.client
 
 import android.content.Context
 import ec.erickmedina.data.util.NetworkUtil

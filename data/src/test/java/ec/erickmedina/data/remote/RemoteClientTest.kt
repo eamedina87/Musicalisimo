@@ -3,6 +3,8 @@ package ec.erickmedina.data.remote
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.Gson
 import ec.erickmedina.data.entity.LastFmResponses
+import ec.erickmedina.data.remote.client.LastFmApi
+import ec.erickmedina.data.remote.client.RemoteClient
 import ec.erickmedina.data.util.UtilsMock
 import io.mockk.every
 import io.mockk.mockk

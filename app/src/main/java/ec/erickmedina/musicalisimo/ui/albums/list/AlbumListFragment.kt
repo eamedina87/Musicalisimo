@@ -9,7 +9,7 @@ import ec.erickmedina.musicalisimo.common.base.BaseFragment
 import ec.erickmedina.musicalisimo.common.base.BaseViewModel
 import kotlinx.android.synthetic.main.fragment_album_list.*
 
-class AlbumListFragment : BaseFragment(), AlbumDetailContract.View {
+class AlbumListFragment : BaseFragment(), AlbumListContract.View {
 
     override fun getLayoutId(): Int = R.layout.fragment_album_list
 
@@ -30,6 +30,14 @@ class AlbumListFragment : BaseFragment(), AlbumDetailContract.View {
     override fun onResume() {
         super.onResume()
         checkNavigateUp()
+    }
+
+    override fun showProgress() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun hideProgress() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

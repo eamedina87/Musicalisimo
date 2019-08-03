@@ -1,4 +1,4 @@
-package ec.erickmedina.data.remote
+package ec.erickmedina.data.remote.client
 
 import ec.erickmedina.data.entity.LastFmResponses
 import kotlinx.coroutines.Deferred

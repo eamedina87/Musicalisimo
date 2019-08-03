@@ -1,12 +1,14 @@
 package ec.erickmedina.musicalisimo.ui.search
 
+import ec.erickmedina.musicalisimo.common.base.BaseContract
+
 interface SearchContract {
 
-    interface View {
+    interface View : BaseContract.View {
 
     }
 
-    interface ViewModel {
+    interface ViewModel : BaseContract.ViewModel {
 
     }
 }

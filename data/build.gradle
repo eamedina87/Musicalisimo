@@ -14,6 +14,7 @@ android {
         versionCode config.versionCode
         versionName "${config.versionHigh}.${config.versionMiddle}.${config.versionLow}"
         testInstrumentationRunner config.testInstrumentationRunner
+        buildConfigField "String", "API_KEY", project.property('LAST_FM_API_KEY')
     }
 
     buildTypes {
@@ -49,6 +50,8 @@ dependencies {
     //JSON PARSING
     //implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
     implementation "com.google.code.gson:gson:${libs.gson}"
+    //MODEL MAPPER
+    implementation "org.modelmapper:modelmapper:${libs.modelMapper}"
     // LOCAL - DATABASE
     implementation "androidx.room:room-runtime:${libs.room}"
     implementation "androidx.room:room-ktx:${libs.room}"
@@ -63,4 +66,5 @@ dependencies {
         debugImplementation "com.readystatesoftware.chuck:library:${libs.chuck}"
         releaseImplementation "com.readystatesoftware.chuck:library-no-op:${libs.chuck}"
     }
+
 }

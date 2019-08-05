@@ -5,6 +5,7 @@ import com.google.common.truth.Truth.assertThat
 import ec.erickmedina.data.entity.LastFmResponses
 import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.domain.models.ArtistModel
+import ec.erickmedina.domain.models.TopAlbumModel
 
 class UtilsAssertion {
 
@@ -105,15 +106,32 @@ class UtilsAssertion {
 
         fun assertArtistModel(artist: ArtistModel) {
             with(artist) {
-                assertThat(id).isNotEmpty()
+                assertThat(id).isNotNull()
                 assertThat(listeners).isAtLeast(0)
                 assertThat(name).isNotEmpty()
                 assertThat(images).isNotNull()
                 images.forEach {
                     with(it) {
-                        assertThat(url).isNotEmpty()
-                        assertThat(size).isNotEmpty()
+                        assertThat(url).isNotNull()
+                        assertThat(size).isNotNull()
                     }
+                }
+            }
+        }
+
+        fun assertTopAlbumModel(topAlbum: TopAlbumModel) {
+            with(topAlbum) {
+                assertThat(name).isNotEmpty()
+                assertThat(name).isNotEmpty()
+                assertThat(playcount).isAtLeast(0)
+                assertThat(url).isNotNull()
+                assertThat(artist).isNotNull()
+                assertThat(artist.name).isNotEmpty()
+                assertThat(artist.id).isNotNull()
+                image.forEach { image ->
+                    Truth.assertThat(image).isNotNull()
+                    Truth.assertThat(image.url).isNotNull()
+                    Truth.assertThat(image.size).isNotNull()
                 }
             }
         }

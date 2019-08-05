@@ -2,29 +2,29 @@ package ec.erickmedina.data.util
 
 import ec.erickmedina.data.entity.LastFmResponses
 import ec.erickmedina.data.local.database.entity.DatabaseEntities
-import ec.erickmedina.domain.models.AlbumModel
-import ec.erickmedina.domain.models.ImageModel
-import ec.erickmedina.domain.models.TagModel
-import ec.erickmedina.domain.models.TrackModel
+import ec.erickmedina.domain.models.*
 
 fun DatabaseEntities.AlbumEntity.mapToModel():AlbumModel {
-    val images = arrayListOf<ImageModel>()
-    album.image?.forEach {
-        images.add(it.mapToModel())
-    }
-    val tracks = arrayListOf<TrackModel>()
-    album.tracks?.track?.forEach {
-        tracks.add(it.mapToModel())
-    }
-    val tags = arrayListOf<TagModel>()
-    album.tags?.tag?.forEach {
-        tags.add(it.mapToModel())
-    }
-    return AlbumModel(album.name ?: "", album.artist ?: "", id, album.mbid ?: "", images,album.listeners ?: 0,
-        album.playcount ?: 0, tracks, tags, album.wiki?.published ?: "",
-        album.wiki?.summary ?: "", album.wiki?.content ?: "")
+    return album.mapToModel()
 }
 
+fun LastFmResponses.Album.mapToModel() : AlbumModel {
+    val images = arrayListOf<ImageModel>()
+    image?.forEach {
+        images.add(it.mapToModel())
+    }
+    val trackList = arrayListOf<TrackModel>()
+    tracks?.track?.forEach {
+        trackList.add(it.mapToModel())
+    }
+    val tagList = arrayListOf<TagModel>()
+    tags?.tag?.forEach {
+        tagList.add(it.mapToModel())
+    }
+    return AlbumModel(name, artist, 0, mbid ?: "", images, listeners,
+        playcount, trackList, tagList, wiki?.published ?: "", wiki?.summary?: "",
+        wiki?.content ?: "")
+}
 
 fun LastFmResponses.Image.mapToModel() : ImageModel =
     ImageModel(text ?: "", size ?: "")
@@ -34,6 +34,23 @@ fun LastFmResponses.Track.mapToModel() : TrackModel =
 
 fun LastFmResponses.Tag.mapToModel() : TagModel =
     TagModel(name ?: "")
+
+fun LastFmResponses.Artist.mapToModel() : ArtistModel {
+    val images = arrayListOf<ImageModel>()
+    image?.forEach {
+        images.add(it.mapToModel())
+    }
+    return ArtistModel(name ?: "", listeners ?: 0, mbid ?: "", images)
+}
+
+fun LastFmResponses.TopAlbum.mapToModel() : TopAlbumModel {
+    val images = arrayListOf<ImageModel>()
+    image?.forEach {
+        images.add(it.mapToModel())
+    }
+    return TopAlbumModel(name ?: "", playcount ?: 0, mbid ?: "", url ?: "",
+        artist.mapToModel(), images)
+}
 
 fun AlbumModel.mapToDBEntity() : DatabaseEntities.AlbumEntity {
     return DatabaseEntities.AlbumEntity(localId, artist, name, playcount, mapToRemoteEntity())

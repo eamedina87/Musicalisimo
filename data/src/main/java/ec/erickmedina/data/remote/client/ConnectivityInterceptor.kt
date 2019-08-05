@@ -2,7 +2,7 @@ package ec.erickmedina.data.remote.client
 
 import android.content.Context
 import ec.erickmedina.data.util.NetworkUtil
-import ec.erickmedina.data.util.NoConnectivityException
+import ec.erickmedina.domain.exceptions.NoConnectivityException
 import okhttp3.Interceptor
 import okhttp3.Response
 

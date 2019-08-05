@@ -1,4 +1,4 @@
-package ec.erickmedina.data.util
+package ec.erickmedina.domain.exceptions
 
 import java.io.IOException
 

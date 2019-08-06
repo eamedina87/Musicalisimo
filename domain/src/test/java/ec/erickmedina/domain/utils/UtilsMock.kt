@@ -1,5 +1,7 @@
 package ec.erickmedina.data.utils
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import ec.erickmedina.domain.models.*
 import kotlin.collections.ArrayList
 
@@ -30,6 +32,9 @@ class UtilsMock {
 
         fun getTopAlbumThree():TopAlbumModel =
             TopAlbumModel("Grandes Exitos", 1000000, "", "", getArtistThree(), getImageList())
+
+        fun getMockedLiveAlbumList(): LiveData<ArrayList<AlbumModel>> =
+                MutableLiveData(getMockedAlbumList())
 
         fun getMockedAlbumList(): ArrayList<AlbumModel> =
             arrayListOf(getAlbumOne(), getAlbumTwo(), getAlbumThree())
@@ -86,6 +91,8 @@ class UtilsMock {
 
         private fun getTrackThree(): TrackModel =
             TrackModel("Song Three", 200, 1)
+
+
 
 
     }

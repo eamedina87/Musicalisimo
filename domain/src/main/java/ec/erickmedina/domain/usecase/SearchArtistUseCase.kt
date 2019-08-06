@@ -15,7 +15,7 @@ class SearchArtistUseCase(private val repository: Repository) : UseCase<DataStat
             val artistList = repository.searchArtistWithInput(params.input)
             DataState.Success(artistList)
         } catch (e:Exception) {
-            DataState.Error(e.message ?: "An error ocurred getting the Artists")
+            DataState.Error(e.message ?: "An error occurred getting the Artists")
         }
     }
 

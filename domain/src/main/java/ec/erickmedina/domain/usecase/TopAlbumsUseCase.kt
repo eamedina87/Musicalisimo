@@ -15,7 +15,7 @@ class TopAlbumsUseCase(private val repository: Repository) : UseCase<DataState<A
             val topAlbums = repository.getTopAlbumsForArtist(params.artistId)
             DataState.Success(topAlbums)
         } catch (e:Exception) {
-            DataState.Error(e.message ?: "An error ocurred getting the Top ALbums")
+            DataState.Error(e.message ?: "An error occurred getting the Top ALbums")
         }
     }
 

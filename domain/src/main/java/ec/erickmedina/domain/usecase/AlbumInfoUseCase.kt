@@ -14,7 +14,7 @@ class AlbumInfoUseCase(private val repository: Repository) : UseCase<DataState<A
             val album = repository.getAlbumInfoForId(params.albumId)
             DataState.Success(album)
         } catch (e:Exception) {
-            DataState.Error(e.message ?: "An error ocurred getting the Top ALbums")
+            DataState.Error(e.message ?: "An error occurred getting the Album")
         }
     }
 

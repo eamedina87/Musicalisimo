@@ -1,7 +1,6 @@
 package ec.erickmedina.data.utils
 
 import ec.erickmedina.domain.models.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class UtilsMock {
@@ -34,6 +33,10 @@ class UtilsMock {
 
         fun getMockedAlbumList(): ArrayList<AlbumModel> =
             arrayListOf(getAlbumOne(), getAlbumTwo(), getAlbumThree())
+
+        fun getAlbumEmpty(): AlbumModel =
+            AlbumModel("", "", 1, "mbid", getImageList(), 1000,
+                1000, arrayListOf(), getTagList(), "2019-02", "", "")
 
         fun getAlbumOne():AlbumModel =
             AlbumModel("OASIS", "JBalvin", 1, "mbid", getImageList(), 1000,

@@ -1,10 +1,12 @@
 package ec.erickmedina.domain.usecase
 
 import ec.erickmedina.domain.models.TopAlbumModel
+import ec.erickmedina.domain.repository.Repository
+import ec.erickmedina.domain.states.DataState
 
-class TopAlbumsUseCase : UseCase<ArrayList<TopAlbumModel>, TopAlbumsUseCase.Params>() {
+class TopAlbumsUseCase(private val repository: Repository) : UseCase<DataState<ArrayList<TopAlbumModel>>, TopAlbumsUseCase.Params>() {
 
-    override suspend fun buildUseCase(params: Params?): ArrayList<TopAlbumModel> {
+    override suspend fun buildUseCase(params: Params?): DataState<ArrayList<TopAlbumModel>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

@@ -1,8 +1,6 @@
 package ec.erickmedina.data.utils
 
-import ec.erickmedina.domain.models.ArtistModel
-import ec.erickmedina.domain.models.ImageModel
-import ec.erickmedina.domain.models.TopAlbumModel
+import ec.erickmedina.domain.models.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -34,6 +32,21 @@ class UtilsMock {
         fun getTopAlbumThree():TopAlbumModel =
             TopAlbumModel("Grandes Exitos", 1000000, "", "", getArtistThree(), getImageList())
 
+        fun getMockedAlbumList(): ArrayList<AlbumModel> =
+            arrayListOf(getAlbumOne(), getAlbumTwo(), getAlbumThree())
+
+        fun getAlbumOne():AlbumModel =
+            AlbumModel("OASIS", "JBalvin", 1, "mbid", getImageList(), 1000,
+                1000, getTrackList(), getTagList(), "2019-02", "", "")
+
+        fun getAlbumTwo():AlbumModel =
+            AlbumModel("Barrio Fino", "Daddy Yankee", 2, "mbid", getImageList(), 10000,
+                10000, getTrackList(), getTagList(), "2004-04", "", "")
+
+        fun getAlbumThree():AlbumModel =
+            AlbumModel("Grandes Exitos", "Julio Jaramillo", 3, "mbid", getImageList(), 100000,
+                100000, getTrackList(), getTagList(), "1985-02", "", "")
+
         fun getImageList():ArrayList<ImageModel> =
             arrayListOf(getImageOne(), getImageTwo(), getImageThree())
 
@@ -46,27 +59,30 @@ class UtilsMock {
         private fun getImageThree(): ImageModel =
             ImageModel("http://", "medium")
 
+        private fun getTagList(): ArrayList<TagModel> =
+            arrayListOf(getTagOne(), getTagTwo(), getTagThree())
 
 
-        private fun getSearchArtistResponseJson(): String {
-            val stream = this::class.java.classLoader.getResourceAsStream("lastfm_artist_search_response.json")
-            return convertStreamToString(stream)
-        }
+        fun getTagOne() : TagModel =
+            TagModel("reggaeton")
 
-        private fun getTopAlbumsResponseJson(): String {
-            val stream = this::class.java.classLoader.getResourceAsStream("lastfm_top_albums_response.json")
-            return convertStreamToString(stream)
-        }
+        fun getTagTwo() : TagModel =
+            TagModel("latin")
 
-        private fun getAlbumInfoResponseJson(): String {
-            val stream = this::class.java.classLoader.getResourceAsStream("lastfm_album_info_response.json")
-            return convertStreamToString(stream)
-        }
+        fun getTagThree() : TagModel =
+            TagModel("pasillo")
 
-        private fun convertStreamToString(ins:java.io.InputStream ) : String {
-            val s = Scanner(ins).useDelimiter("\\A")
-            return if (s.hasNext()) s.next() else ""
-        }
+        private fun getTrackList(): ArrayList<TrackModel> =
+            arrayListOf(getTrackOne(), getTrackTwo(), getTrackThree())
+
+        private fun getTrackOne(): TrackModel =
+            TrackModel("Song One", 250, 3)
+
+        private fun getTrackTwo(): TrackModel =
+            TrackModel("Song Two", 150, 2)
+
+        private fun getTrackThree(): TrackModel =
+            TrackModel("Song Three", 200, 1)
 
 
     }

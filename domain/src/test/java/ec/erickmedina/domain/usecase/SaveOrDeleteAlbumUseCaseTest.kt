@@ -104,11 +104,11 @@ class SaveOrDeleteAlbumUseCaseTest {
             coEvery { saveAlbum(any()) } throws Exception("database error")
         }
         runBlocking {
-            val usecase = SaveOrDeleteAlbumUseCase(repository)
+            val usecase = SaveOrDeleteAlbumUseCase(mRepository)
             val savedAlbum = usecase.execute(SaveOrDeleteAlbumUseCase.Params(UtilsMock.getAlbumEmpty(), true))
             coVerify(exactly = 0) {
-                repository.saveAlbum(any())
-                repository.deleteAlbum(any())
+                mRepository.saveAlbum(any())
+                mRepository.deleteAlbum(any())
             }
             assertThat(savedAlbum).isFalse()
         }

@@ -1,6 +1,5 @@
 package ec.erickmedina.domain.usecase
 
-
 import com.google.common.truth.Truth.assertThat
 import ec.erickmedina.data.utils.UtilsAssertion
 import ec.erickmedina.data.utils.UtilsMock
@@ -26,14 +25,13 @@ class SearchArtistUseCaseTest {
         repository = mockk {
             coEvery { searchArtistWithInput(any()) } returns UtilsMock.getMockedArtistList()
         }
-
     }
 
     @Test
     fun `use case gets artist info with success`() {
         runBlocking {
             val useCase = SearchArtistUseCase(repository)
-            val state = useCase.execute(SearchArtistUseCase.Params(""))
+            val state = useCase.execute(SearchArtistUseCase.Params("he"))
             coVerify { repository.searchArtistWithInput(any()) }
             assert(state is DataState.Success)
             val artists = (state as DataState.Success).data
@@ -45,17 +43,42 @@ class SearchArtistUseCaseTest {
     }
 
     @Test
+    fun `use case gets artist info with null params gives error`() {
+        runBlocking {
+            val useCase = SearchArtistUseCase(repository)
+            val state = useCase.execute()
+            coVerify(exactly = 0) { repository.searchArtistWithInput(any()) }
+            assert(state is DataState.Error)
+            val error = (state as DataState.Error).error.toString()
+            assertThat(error).matches("Artist name must be specified")
+
+        }
+    }
+
+    @Test
+    fun `use case gets artist info with empty input gives error`() {
+        runBlocking {
+            val useCase = SearchArtistUseCase(repository)
+            val state = useCase.execute(SearchArtistUseCase.Params(""))
+            coVerify(exactly = 0) { repository.searchArtistWithInput(any()) }
+            assert(state is DataState.Error)
+            val error = (state as DataState.Error).error.toString()
+            assertThat(error).matches("Artist name must be specified")
+        }
+    }
+
+    @Test
     fun `use case gets artist info with error`() {
         val mRepository = mockk <Repository> {
             coEvery { searchArtistWithInput(any()) } throws NoConnectivityException("No internet")
         }
         runBlocking {
             val useCase = SearchArtistUseCase(mRepository)
-            val state = useCase.execute(SearchArtistUseCase.Params(""))
+            val state = useCase.execute(SearchArtistUseCase.Params("he"))
             coVerify { mRepository.searchArtistWithInput(any()) }
             assert(state is DataState.Error)
-            val error = (state as DataState.Error).error
-            assert(error is NoConnectivityException)
+            val error = (state as DataState.Error).error.toString()
+            assertThat(error).matches("No internet")
         }
     }
 

@@ -8,14 +8,14 @@ import java.lang.Exception
 class SearchArtistUseCase(private val repository: Repository) : UseCase<DataState<ArrayList<ArtistModel>>, SearchArtistUseCase.Params>() {
 
     override suspend fun buildUseCase(params: Params?): DataState<ArrayList<ArtistModel>> {
-        try {
-            if (params==null || params.input.isEmpty()) {
-                return DataState.Error("Artist name must be specified")
-            }
+        if (params==null || params.input.isEmpty()) {
+            return DataState.Error("Artist name must be specified")
+        }
+        return try {
             val artistList = repository.searchArtistWithInput(params.input)
-            return DataState.Success(artistList)
+            DataState.Success(artistList)
         } catch (e:Exception) {
-            return DataState.Error(e.message ?: "An error ocurred getting the Artists")
+            DataState.Error(e.message ?: "An error ocurred getting the Artists")
         }
     }
 

@@ -1,6 +1,5 @@
 package ec.erickmedina.domain.usecase
 
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
 import ec.erickmedina.data.utils.UtilsAssertion
 import ec.erickmedina.data.utils.UtilsMock
@@ -71,7 +70,7 @@ class TopAlbumsUseCaseTest {
         runBlocking {
             val useCase = TopAlbumsUseCase(mRepository)
             val state = useCase.execute(TopAlbumsUseCase.Params("jba"))
-            coVerify { mRepository.searchArtistWithInput(any()) }
+            coVerify { mRepository.getTopAlbumsForArtist(any()) }
             assert(state is DataState.Error)
             val error = (state as DataState.Error).error.toString()
             assertThat(error).matches("No internet")

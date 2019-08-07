@@ -1,19 +1,24 @@
-package ec.erickmedina.musicalisimo.ui.albums.detail
+package ec.erickmedina.musicalisimo.ui.albums.list.top
 
 import android.view.MenuItem
-import ec.erickmedina.domain.models.AlbumModel
+import ec.erickmedina.domain.models.TopAlbumModel
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseFragment
 import ec.erickmedina.musicalisimo.common.base.BaseViewModel
+import kotlinx.android.synthetic.main.fragment_album_list.*
 
-class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
+class AlbumTopFragment : BaseFragment(), AlbumTopContract.View {
 
-    override fun getLayoutId(): Int = R.layout.fragment_album_detail
+
+    override fun getLayoutId(): Int = R.layout.fragment_album_list
 
     override fun initView() {
-        setActivityTitle("Album Detail")
-        setActivityButtonUp(true)
+        detail_button.setOnClickListener {
+            navigator.goToAlbumDetail(this@AlbumTopFragment)
+        }
         setHasOptionsMenu(true)
+        setActivityButtonUp(true)
+        setActivityTitle("Album List")
     }
 
     override val mViewModel: BaseViewModel
@@ -27,34 +32,22 @@ class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onAlbumSuccess(album: AlbumModel) {
+    override fun onTopAlbumsLoaded(albumList: ArrayList<TopAlbumModel>) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onAlbumError(error: String) {
+    override fun onTopAlbumsEmpty() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onAlbumSaveSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onAlbumSaveError(error: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onAlbumDeleteSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onAlbumDeleteError(error: String?) {
+    override fun onTopAlbumsError(error: String?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                navigator.pop(this@AlbumDetailFragment)
+                navigator.pop(this@AlbumTopFragment)
                 return true
             }
 

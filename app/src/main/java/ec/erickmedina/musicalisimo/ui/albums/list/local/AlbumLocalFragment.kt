@@ -1,25 +1,20 @@
-package ec.erickmedina.musicalisimo.ui.albums.list
+package ec.erickmedina.musicalisimo.ui.albums.list.local
 
-import android.util.Log
-import android.view.MenuItem
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.get
+import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseFragment
 import ec.erickmedina.musicalisimo.common.base.BaseViewModel
 import kotlinx.android.synthetic.main.fragment_album_list.*
 
-class AlbumListFragment : BaseFragment(), AlbumListContract.View {
+class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View {
 
     override fun getLayoutId(): Int = R.layout.fragment_album_list
 
-    val navFragment by lazy { getBaseActivity().supportFragmentManager.findFragmentById(R.id.navigation) }
-    val mustShowUp by lazy { navFragment?.childFragmentManager?.backStackEntryCount!! > 1 }
-
     override fun initView() {
         detail_button.setOnClickListener {
-            navigator.goToAlbumDetail(this@AlbumListFragment)
+            navigator.goToAlbumDetail(this@AlbumLocalFragment)
         }
+        setActivityButtonUp(false)
         setActivityTitle("Album List")
     }
 
@@ -29,7 +24,6 @@ class AlbumListFragment : BaseFragment(), AlbumListContract.View {
 
     override fun onResume() {
         super.onResume()
-        checkNavigateUp()
     }
 
     override fun showProgress() {
@@ -40,20 +34,16 @@ class AlbumListFragment : BaseFragment(), AlbumListContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                navigator.pop(this@AlbumListFragment)
-                return true
-            }
-
-        }
-        return super.onOptionsItemSelected(item)
+    override fun onLocalAlbumsLoaded(albumList: ArrayList<AlbumModel>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    private fun checkNavigateUp() {
-        setHasOptionsMenu(mustShowUp)
-        setActivityButtonUp(mustShowUp)
+    override fun onLocalAlbumsEmpty() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onLocalAlbumsError(error: String?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

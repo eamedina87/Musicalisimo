@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/navigation_albums"
+            android:id="@+id/navigation_local_albums"
             android:icon="@drawable/ic_menu_album"
             android:title="@string/menu_albums"/>
 

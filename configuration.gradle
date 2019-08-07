@@ -23,6 +23,7 @@ ext {
             truth: "1.0",
             archTesting : "2.0.1",
             lifecycleExtensions : "2.2.0-alpha02",
+            coroutineTest: "1.3.0-M1",
             //JSON PARSING
             moshi: "1.8.0",
             gson: "2.8.5",
@@ -35,6 +36,7 @@ ext {
             constraintLayout : "1.1.3",
             lifecycle : "2.0.0",
             navigation: "2.1.0-beta02",
+            androidxLegacy: "1.0.0",
             //COROUTINES
             coroutines : "1.1.0",
             //DEPENDENCY INJECTION

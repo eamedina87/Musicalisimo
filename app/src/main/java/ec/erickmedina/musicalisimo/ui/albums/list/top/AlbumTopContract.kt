@@ -9,11 +9,9 @@ import ec.erickmedina.musicalisimo.common.base.BaseContract
 interface AlbumTopContract {
 
     interface View : BaseContract.View {
-
         fun onTopAlbumsLoaded(albumList: ArrayList<TopAlbumModel>)
         fun onTopAlbumsEmpty()
-        fun onTopAlbumsError(error: String)
-
+        fun onTopAlbumsError(error: String?)
     }
 
     interface ViewModel : BaseContract.ViewModel {

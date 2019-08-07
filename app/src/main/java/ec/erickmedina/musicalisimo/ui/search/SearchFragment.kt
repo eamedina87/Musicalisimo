@@ -38,7 +38,7 @@ class SearchFragment : BaseFragment(), SearchContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onArtistSearchError(error: String) {
+    override fun onArtistSearchError(error: String?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

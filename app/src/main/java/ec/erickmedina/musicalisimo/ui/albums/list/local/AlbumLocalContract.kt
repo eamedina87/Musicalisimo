@@ -11,7 +11,7 @@ interface AlbumLocalContract {
     interface View : BaseContract.View {
         fun onLocalAlbumsLoaded(albumList: ArrayList<AlbumModel>)
         fun onLocalAlbumsEmpty()
-        fun onLocalAlbumsError(error:String)
+        fun onLocalAlbumsError(error:String?)
     }
 
     interface ViewModel : BaseContract.ViewModel {

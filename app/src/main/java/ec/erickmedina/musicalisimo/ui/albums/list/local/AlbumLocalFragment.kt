@@ -42,7 +42,7 @@ class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onLocalAlbumsError(error: String) {
+    override fun onLocalAlbumsError(error: String?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

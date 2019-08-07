@@ -10,7 +10,7 @@ interface SearchContract {
     interface View : BaseContract.View {
         fun onArtistSearchSuccess(list: ArrayList<ArtistModel>)
         fun onArtistSearchEmpty()
-        fun onArtistSearchError(error: String)
+        fun onArtistSearchError(error: String?)
     }
 
     interface ViewModel : BaseContract.ViewModel {

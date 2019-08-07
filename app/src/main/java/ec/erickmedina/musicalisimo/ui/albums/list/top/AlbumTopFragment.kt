@@ -40,7 +40,7 @@ class AlbumTopFragment : BaseFragment(), AlbumTopContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onTopAlbumsError(error: String) {
+    override fun onTopAlbumsError(error: String?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

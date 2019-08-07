@@ -1,6 +1,7 @@
 package ec.erickmedina.musicalisimo.ui.albums.detail
 
 import android.view.MenuItem
+import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseFragment
 import ec.erickmedina.musicalisimo.common.base.BaseViewModel
@@ -23,6 +24,30 @@ class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
     }
 
     override fun hideProgress() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onAlbumSuccess(album: AlbumModel) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onAlbumError(error: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onAlbumSaveSuccess() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onAlbumSaveError(error: String?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onAlbumDeleteSuccess() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onAlbumDeleteError(error: String?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

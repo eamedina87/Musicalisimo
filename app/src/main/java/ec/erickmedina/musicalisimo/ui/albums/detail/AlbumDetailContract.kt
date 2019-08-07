@@ -9,7 +9,12 @@ import ec.erickmedina.musicalisimo.common.base.BaseContract
 interface AlbumDetailContract {
 
     interface View : BaseContract.View {
-
+        fun onAlbumSuccess(album: AlbumModel)
+        fun onAlbumError(error:String)
+        fun onAlbumSaveSuccess()
+        fun onAlbumSaveError(error: String?)
+        fun onAlbumDeleteSuccess()
+        fun onAlbumDeleteError(error: String?)
     }
 
     interface ViewModel : BaseContract.ViewModel {

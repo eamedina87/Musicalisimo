@@ -2,13 +2,22 @@ package ec.erickmedina.domain.usecase
 
 import androidx.lifecycle.LiveData
 import ec.erickmedina.domain.models.AlbumModel
+import ec.erickmedina.domain.repository.Repository
+import ec.erickmedina.domain.states.AlbumFilter
 import ec.erickmedina.domain.states.DataState
+import java.lang.Exception
 
-class LocalAlbumsUseCase : UseCase<DataState<LiveData<ArrayList<AlbumModel>>>, LocalAlbumsUseCase.Params>() {
+class LocalAlbumsUseCase(private val repository: Repository) : UseCase<DataState<LiveData<ArrayList<AlbumModel>>>, LocalAlbumsUseCase.Params>() {
 
     override suspend fun buildUseCase(params: Params?): DataState<LiveData<ArrayList<AlbumModel>>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return try {
+            val filter = params?.albumFilter ?: AlbumFilter.Id
+            val messages = repository.getLocalAlbums(filter)
+            return DataState.Success(messages)
+        } catch (e:Exception) {
+            DataState.Error(e.message ?: "An error occurred btaining the Saved Albums")
+        }
     }
 
-    class Params
+    class Params(val albumFilter: AlbumFilter)
 }

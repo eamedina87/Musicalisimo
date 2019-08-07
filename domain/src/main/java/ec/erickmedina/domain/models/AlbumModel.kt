@@ -13,4 +13,8 @@ data class AlbumModel (
     val publication: String,
     val summary: String,
     val description: String
-    )
+    ) {
+    fun isEmpty(): Boolean {
+        return name.isEmpty() || artist.isEmpty() || tracks.isEmpty()
+    }
+}

@@ -4,9 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import ec.erickmedina.data.local.datasource.LocalDataSource
 import ec.erickmedina.data.remote.datasource.RemoteDataSource
-import ec.erickmedina.data.util.NoConnectivityException
 import ec.erickmedina.data.utils.UtilsAssertion
 import ec.erickmedina.data.utils.UtilsMock
+import ec.erickmedina.domain.exceptions.NoConnectivityException
 import ec.erickmedina.domain.states.AlbumFilter
 import io.mockk.coEvery
 import io.mockk.coVerify

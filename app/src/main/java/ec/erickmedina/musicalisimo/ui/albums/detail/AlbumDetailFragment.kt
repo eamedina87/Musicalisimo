@@ -4,7 +4,7 @@ import android.view.MenuItem
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseFragment
 import ec.erickmedina.musicalisimo.common.base.BaseViewModel
-import ec.erickmedina.musicalisimo.ui.albums.list.AlbumDetailContract
+import ec.erickmedina.musicalisimo.ui.albums.list.top.AlbumDetailContract
 
 class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
 

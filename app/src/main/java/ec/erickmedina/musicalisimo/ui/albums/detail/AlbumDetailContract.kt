@@ -1,4 +1,4 @@
-package ec.erickmedina.musicalisimo.ui.albums.list
+package ec.erickmedina.musicalisimo.ui.albums.list.top
 
 import ec.erickmedina.musicalisimo.common.base.BaseContract
 

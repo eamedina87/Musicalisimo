@@ -13,12 +13,16 @@ class Navigator {
 
     }
 
-    fun goToAlbumList(fragment: BaseFragment) {
-        fragment.findNavController().navigate(R.id.albumListFragment)
+    fun goToTopAlbumList(fragment: BaseFragment) {
+        fragment.findNavController().navigate(R.id.action_navigation_search_to_navigation_top_albums)
+    }
+
+    fun goToLocalAlbumList(fragment: BaseFragment) {
+        fragment.findNavController().navigate(R.id.navigation_local_albums)
     }
 
     fun goToAlbumDetail(fragment: BaseFragment) {
-        fragment.findNavController().navigate(R.id.albumDetailFragment)
+        fragment.findNavController().navigate(R.id.navigation_album_detail)
     }
 
     fun pop(fragment: BaseFragment) {

@@ -1,4 +1,4 @@
-package ec.erickmedina.domain.utils
+package ec.erickmedina.musicalisimo.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

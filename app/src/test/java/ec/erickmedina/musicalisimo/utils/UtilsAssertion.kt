@@ -1,4 +1,4 @@
-package ec.erickmedina.domain.utils
+package ec.erickmedina.musicalisimo.utils
 
 import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat

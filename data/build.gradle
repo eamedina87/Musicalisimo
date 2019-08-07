@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 def libs = rootProject.ext.libraries
@@ -15,11 +14,16 @@ android {
         versionCode config.versionCode
         versionName "${config.versionHigh}.${config.versionMiddle}.${config.versionLow}"
         testInstrumentationRunner config.testInstrumentationRunner
+        buildConfigField "String", "API_KEY", project.property('LAST_FM_API_KEY')
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -27,21 +31,42 @@ android {
 }
 
 dependencies {
+    implementation project(":domain")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //TESTING
     testImplementation "junit:junit:${libs.jUnit}"
+    testImplementation "io.mockk:mockk:${libs.mockk}"
+    testImplementation "com.google.truth:truth:${libs.truth}"
+    testImplementation "android.arch.core:core-testing:${libs.archTesting}"
+    androidTestImplementation "io.mockk:mockk:${libs.mockk}"
+    androidTestImplementation "com.google.truth:truth:${libs.truth}"
     androidTestImplementation "androidx.test:runner:${libs.androidTestRunner}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${libs.espresso}"
+    androidTestImplementation "androidx.test.ext:junit-ktx:${libs.jUnitKotlin}"
+    androidTestImplementation "android.arch.core:core-testing:${libs.archTesting}"
     //ANDROID
     implementation "androidx.appcompat:appcompat:${libs.appCompat}"
+    implementation "androidx.core:core-ktx:${libs.ktxCore}"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${libs.lifecycleExtensions}"
     //JSON PARSING
-    implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
+    //implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
+    implementation "com.google.code.gson:gson:${libs.gson}"
+    //MODEL MAPPER
+    implementation "org.modelmapper:modelmapper:${libs.modelMapper}"
     // LOCAL - DATABASE
     implementation "androidx.room:room-runtime:${libs.room}"
     implementation "androidx.room:room-ktx:${libs.room}"
     kapt "androidx.room:room-compiler:${libs.room}"
     //REMOTE - API
     implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
-    implementation "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
+    implementation "com.squareup.retrofit2:converter-moshi:${libs.retrofit}"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${libs.retrofitCoroutines}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${libs.okhttp}"
+    //REMOTE INTERCEPTOR
+    dependencies {
+        debugImplementation "com.readystatesoftware.chuck:library:${libs.chuck}"
+        releaseImplementation "com.readystatesoftware.chuck:library-no-op:${libs.chuck}"
+    }
+
 }

@@ -1,22 +1,27 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+
+def libs = rootProject.ext.libraries
+def config = rootProject.ext.configuration
 
 android {
-    compileSdkVersion 28
-
-
+    compileSdkVersion config.compileSdkVersion
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName "${config.versionHigh}.${config.versionMiddle}.${config.versionLow}"
+        testInstrumentationRunner config.testInstrumentationRunner
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -25,9 +30,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //TESTING
+    testImplementation "junit:junit:${libs.jUnit}"
+    androidTestImplementation "androidx.test:runner:${libs.androidTestRunner}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${libs.espresso}"
+    //ANDROID
+    implementation "androidx.appcompat:appcompat:${libs.appCompat}"
+    implementation "androidx.core:core-ktx:${libs.ktxCore}"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

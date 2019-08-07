@@ -20,7 +20,6 @@ android {
         testInstrumentationRunner config.testInstrumentationRunner
 
         //CONSTANTS
-        buildConfigField "String", "API_KEY", project.property('LAST_FM_API_KEY')
         buildConfigField "String", "API_URL", project.property('LAST_FM_ROOT_URL')
 
     }
@@ -42,8 +41,17 @@ android {
 }
 
 dependencies {
+    implementation project(":data")
+    implementation project(":domain")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //ANNOTATIONS
+    //ANNOTATIONS
+    implementation group: 'javax.inject', name: 'javax.inject', version: '1'
     //TESTING - UNIT
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation "junit:junit:${libs.jUnit}"
     testImplementation "org.robolectric:robolectric:${libs.robolectric}"
     testImplementation "io.mockk:mockk:${libs.mockk}"
@@ -55,7 +63,7 @@ dependencies {
     //JSON PARSING
     implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
     //ANDROID + KOTLIN
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:${libs.appCompat}"
     implementation "androidx.core:core-ktx:${libs.ktxCore}"
     //ANDROID UI
@@ -64,6 +72,8 @@ dependencies {
     //ANDROID ARCHITECTURE
     implementation "androidx.lifecycle:lifecycle-extensions:${libs.lifecycle}"
     kapt "androidx.lifecycle:lifecycle-extensions:${libs.lifecycle}"
+    implementation "androidx.navigation:navigation-fragment-ktx:${libs.navigation}"
+    implementation "androidx.navigation:navigation-ui-ktx:${libs.navigation}"
     //COROUTINES
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.coroutines}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.coroutines}"

@@ -41,19 +41,19 @@ class UtilsMock {
 
         fun getAlbumEmpty(): AlbumModel =
             AlbumModel("", "", 1, "mbid", getImageList(), 1000,
-                1000, arrayListOf(), getTagList(), "2019-02", "", "")
+                1000, arrayListOf(), getTagList(), "2019-02", "", "", false)
 
         fun getAlbumOne():AlbumModel =
             AlbumModel("OASIS", "JBalvin", 1, "mbid", getImageList(), 1000,
-                1000, getTrackList(), getTagList(), "2019-02", "", "")
+                1000, getTrackList(), getTagList(), "2019-02", "", "", false)
 
         fun getAlbumTwo():AlbumModel =
             AlbumModel("Barrio Fino", "Daddy Yankee", 2, "mbid", getImageList(), 10000,
-                10000, getTrackList(), getTagList(), "2004-04", "", "")
+                10000, getTrackList(), getTagList(), "2004-04", "", "", false)
 
         fun getAlbumThree():AlbumModel =
             AlbumModel("Grandes Exitos", "Julio Jaramillo", 3, "mbid", getImageList(), 100000,
-                100000, getTrackList(), getTagList(), "1985-02", "", "")
+                100000, getTrackList(), getTagList(), "1985-02", "", "", false)
 
         fun getImageList():ArrayList<ImageModel> =
             arrayListOf(getImageOne(), getImageTwo(), getImageThree())

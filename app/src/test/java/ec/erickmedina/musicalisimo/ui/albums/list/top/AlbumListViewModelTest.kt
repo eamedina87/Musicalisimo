@@ -1,6 +1,5 @@
 package ec.erickmedina.musicalisimo.ui.albums.list.top
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import ec.erickmedina.domain.states.DataState
 import ec.erickmedina.domain.usecase.LocalAlbumsUseCase
@@ -13,9 +12,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
@@ -24,9 +21,6 @@ class AlbumListViewModelTest: BaseTest() {
 
     private lateinit var topAlbumsUseCase: TopAlbumsUseCase
     private lateinit var localAlbumsUseCase: LocalAlbumsUseCase
-
-    @get:Rule
-    var rule: TestRule = InstantTaskExecutorRule()
 
     @Before
     fun setupTest() {

@@ -12,7 +12,8 @@ data class AlbumModel (
     val tags: ArrayList<TagModel>,
     val publication: String,
     val summary: String,
-    val description: String
+    val description: String,
+    val isSaved: Boolean
     ) {
     fun isEmpty(): Boolean {
         return name.isEmpty() || artist.isEmpty() || tracks.isEmpty()

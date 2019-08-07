@@ -23,7 +23,7 @@ fun LastFmResponses.Album.mapToModel() : AlbumModel {
     }
     return AlbumModel(name, artist, 0, mbid ?: "", images, listeners,
         playcount, trackList, tagList, wiki?.published ?: "", wiki?.summary?: "",
-        wiki?.content ?: "")
+        wiki?.content ?: "", isSaved)
 }
 
 fun LastFmResponses.Image.mapToModel() : ImageModel =

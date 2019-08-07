@@ -22,7 +22,7 @@ object LastFmResponses {
     data class AlbumInfoResponse(val album: Album)
     data class Album(val name: String, val artist: String, val mbid: String, val url: String,
                      val image: Array<Image>, val listeners: Long, val playcount: Long,
-                     val tracks: Tracks, val tags:Tags, val wiki:Wiki)
+                     val tracks: Tracks, val tags:Tags, val wiki:Wiki, var isSaved:Boolean = false)
     data class Tracks(val track:Array<Track>)
     data class Track(val name: String, val url: String, val duration: Int,
                      @SerializedName("@attr") val attr: Map<String, String>,

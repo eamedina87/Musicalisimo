@@ -6,7 +6,7 @@
 	xmlns:tools="http://schemas.android.com/tools">
 
 	<ImageView
-		android:id="@+id/item_artist_image"
+		android:id="@+id/item_image"
 		android:layout_width="200dp"
 		android:layout_height="200dp"
 		android:src="@drawable/artist_placeholder"
@@ -19,7 +19,7 @@
 		/>
 
 	<TextView
-		android:id="@+id/item_artist_name"
+		android:id="@+id/item_name"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:padding="8dp"
@@ -38,8 +38,8 @@
 		android:background="#30ffffff"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintTop_toTopOf="@id/item_artist_name"
-		app:layout_constraintBottom_toBottomOf="@id/item_artist_name"
+		app:layout_constraintTop_toTopOf="@id/item_name"
+		app:layout_constraintBottom_toBottomOf="@id/item_name"
 		/>
 
 	<View

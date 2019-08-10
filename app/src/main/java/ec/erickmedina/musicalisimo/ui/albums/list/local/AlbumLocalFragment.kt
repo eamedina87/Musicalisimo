@@ -15,9 +15,6 @@ class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View {
     override val mViewModel by viewModel<AlbumListViewModel>()
 
     override fun initView() {
-        detail_button.setOnClickListener {
-            navigator.goToAlbumDetail(this@AlbumLocalFragment)
-        }
         setActivityButtonUp(false)
         setActivityTitle("Album List")
     }

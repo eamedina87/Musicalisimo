@@ -52,6 +52,9 @@ class RepositoryImpl(
         remoteDataSource.searchArtist(artist, page)
 
 
+    override fun getTopAlbumsFor(artist: String, page: String?): Listing<TopAlbumModel> =
+        remoteDataSource.getTopAlbums(artist, page)
+
     override suspend fun searchArtistWithInput(input: String): ArrayList<ArtistModel> {
         val artists = ArrayList<ArtistModel>()
         val artistMatches = remoteDataSource.searchArtistAsync(input)

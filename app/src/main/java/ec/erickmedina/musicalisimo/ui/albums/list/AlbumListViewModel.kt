@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.domain.models.TopAlbumModel
+import ec.erickmedina.domain.repository.Repository
 import ec.erickmedina.domain.states.DataState
 import ec.erickmedina.domain.usecase.LocalAlbumsUseCase
 import ec.erickmedina.domain.usecase.TopAlbumsUseCase
@@ -15,7 +16,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AlbumListViewModel(private val topAlbumsUseCase: TopAlbumsUseCase,
-                         private val localAlbumsUseCase: LocalAlbumsUseCase) :
+                         private val localAlbumsUseCase: LocalAlbumsUseCase,
+                         private val repository: Repository) :
     BaseViewModel(), AlbumTopContract.ViewModel, AlbumLocalContract.ViewModel {
 
 
@@ -24,6 +26,10 @@ class AlbumListViewModel(private val topAlbumsUseCase: TopAlbumsUseCase,
 
     private val localAlbums : MutableLiveData<DataState<LiveData<ArrayList<AlbumModel>>>> =
         MutableLiveData()
+
+
+    override fun getTopAlbumsFor(artist: String) =
+        repository.getTopAlbumsFor(artist)
 
     override fun getTopAlbumsObservable(): LiveData<DataState<ArrayList<TopAlbumModel>>> =
         topAlbums

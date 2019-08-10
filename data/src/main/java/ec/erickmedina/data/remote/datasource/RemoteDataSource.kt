@@ -3,6 +3,7 @@ package ec.erickmedina.data.remote.datasource
 import ec.erickmedina.data.entity.LastFmResponses
 import ec.erickmedina.domain.models.ArtistModel
 import ec.erickmedina.domain.models.Listing
+import ec.erickmedina.domain.models.TopAlbumModel
 
 interface RemoteDataSource {
 
@@ -15,6 +16,11 @@ interface RemoteDataSource {
         artist: String,
          page: String? = null
     ) : LastFmResponses.SearchArtistMatches
+
+    fun getTopAlbums(
+        artist: String,
+        page: String? = null
+    ) : Listing<TopAlbumModel>
 
     suspend fun getTopAlbumsForArtistIdAsync(
         artistId: String,

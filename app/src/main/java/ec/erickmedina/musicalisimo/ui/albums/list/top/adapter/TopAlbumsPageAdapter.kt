@@ -1,4 +1,4 @@
-package ec.erickmedina.musicalisimo.ui.search.adapter
+package ec.erickmedina.musicalisimo.ui.albums.list.top.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,17 +6,17 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import ec.erickmedina.domain.models.ArtistModel
+import ec.erickmedina.domain.models.TopAlbumModel
 import ec.erickmedina.domain.models.getImage
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.utils.ImageLoader
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class SearchPageAdapter(private val callbacks: SearchCallbacks) :
-    PagedListAdapter<ArtistModel, SearchPageAdapter.ViewHolder>(DiffUtilCallback()) {
+class TopAlbumsPageAdapter(private val callbacks: TopAlbumCallbacks) :
+    PagedListAdapter<TopAlbumModel, TopAlbumsPageAdapter.ViewHolder>(DiffUtilCallback()) {
 
-    interface SearchCallbacks {
-        fun onArtistSelected(artist:ArtistModel)
+    interface TopAlbumCallbacks {
+        fun onAlbumSelected(album:TopAlbumModel)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,25 +26,25 @@ class SearchPageAdapter(private val callbacks: SearchCallbacks) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         getItem(position)?.let {
-            artist ->
-            holder.bindItem(artist)
-            holder.itemView.setOnClickListener { callbacks.onArtistSelected(artist) }
+            album ->
+            holder.bindItem(album)
+            holder.itemView.setOnClickListener { callbacks.onAlbumSelected(album) }
         }
     }
 
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        fun bindItem(artist:ArtistModel) {
-            ImageLoader.loadInImageView(artist.getImage(), itemView.item_image)
-            itemView.item_name.text = artist.name
+        fun bindItem(model:TopAlbumModel) {
+            ImageLoader.loadInImageView(model.getImage(), itemView.item_image)
+            itemView.item_name.text = model.name
         }
     }
 
-    class DiffUtilCallback: DiffUtil.ItemCallback<ArtistModel>() {
-        override fun areItemsTheSame(oldItem: ArtistModel, newItem: ArtistModel): Boolean {
+    class DiffUtilCallback: DiffUtil.ItemCallback<TopAlbumModel>() {
+        override fun areItemsTheSame(oldItem: TopAlbumModel, newItem: TopAlbumModel): Boolean {
             return oldItem.name == newItem.name
         }
 
-        override fun areContentsTheSame(oldItem: ArtistModel, newItem: ArtistModel): Boolean {
+        override fun areContentsTheSame(oldItem: TopAlbumModel, newItem: TopAlbumModel): Boolean {
             return oldItem.name == newItem.name &&
                     oldItem.id == newItem.id
         }

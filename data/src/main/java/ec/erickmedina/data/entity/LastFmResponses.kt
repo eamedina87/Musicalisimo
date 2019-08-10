@@ -21,8 +21,10 @@ object LastFmResponses {
                                    @SerializedName("opensearch:totalResults") val totalResults: String)
     data class SearchArtistMatches(val artist: Array<Artist>)
     //Top ALbums
+    data class TopAlbumAttributes(val artist: String, val page: String)
     data class TopAlbumResponse(val topalbums: TopAlbums)
-    data class TopAlbums(val album: Array<TopAlbum>)
+    data class TopAlbums(val album: Array<TopAlbum>,
+                         @SerializedName("@attr") val attr: TopAlbumAttributes)
     data class TopAlbum(val name:String, val playcount:Long, val mbid: String, val url:String,
                         val artist: Artist, val image: Array<Image>)
     //Album Info

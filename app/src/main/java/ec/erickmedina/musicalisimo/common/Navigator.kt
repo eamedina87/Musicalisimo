@@ -1,5 +1,6 @@
 package ec.erickmedina.musicalisimo.common
 
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseActivity
@@ -11,6 +12,10 @@ class Navigator {
 
     fun showDialog(fragment: BaseFragment) {
 
+    }
+
+    fun goToNext(fragment: BaseFragment, directions: NavDirections) {
+        fragment.findNavController().navigate(directions)
     }
 
     fun goToTopAlbumList(fragment: BaseFragment) {

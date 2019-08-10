@@ -14,6 +14,7 @@ interface Repository {
     suspend fun deleteAlbum(album:AlbumModel): AlbumModel?
 
     fun searchArtist(artist: String, page: String? = null) : Listing<ArtistModel>
+    fun getTopAlbumsFor(artist: String, page: String? = null) : Listing<TopAlbumModel>
 
     suspend fun searchArtistWithInput(input:String):ArrayList<ArtistModel>
     suspend fun getTopAlbumsForArtist(artisId:String):ArrayList<TopAlbumModel>

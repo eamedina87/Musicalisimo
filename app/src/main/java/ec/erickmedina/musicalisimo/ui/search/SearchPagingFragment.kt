@@ -11,15 +11,16 @@ import ec.erickmedina.musicalisimo.ui.search.adapter.SearchPageAdapter
 import ec.erickmedina.musicalisimo.utils.invisible
 import ec.erickmedina.musicalisimo.utils.visible
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.layout_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchPagingFragment : BaseFragment(), SearchContract.View {
+class SearchPagingFragment : BaseFragment(), SearchContract.View, SearchPageAdapter.SearchCallbacks {
 
     override fun getLayoutId(): Int = R.layout.fragment_search
 
     override val mViewModel by viewModel<SearchPagingViewModel>()
 
-    private var mAdapter : SearchPageAdapter = SearchPageAdapter()
+    private var mAdapter : SearchPageAdapter = SearchPageAdapter(this)
 
     override fun initView() {
         setActivityTitle("Search")
@@ -28,9 +29,32 @@ class SearchPagingFragment : BaseFragment(), SearchContract.View {
         search_img.setOnClickListener { searchForArtist() }
     }
 
+    override fun showProgress() {
+        progressbar.visible()
+    }
+
+    override fun hideProgress() {
+        progressbar.invisible()
+    }
+
+    override fun onArtistSearchSuccess(list: PagedList<ArtistModel>) {
+        empty_message.invisible()
+        mAdapter.submitList(list)
+    }
+
+    override fun onArtistSearchEmpty() {
+        empty_message.visible()
+    }
+
+    override fun onArtistSearchError(error: String?) {
+        showMessage(error ?: getString(R.string.search_error_default))
+    }
+
+    //PRIVATE FUNCTIONS
+
     private fun setupRecyclerView() {
-        search_list_container.adapter = mAdapter
-        search_list_container.layoutManager = GridLayoutManager(context, 2)
+        list_container.adapter = mAdapter
+        list_container.layoutManager = GridLayoutManager(context, 2)
     }
 
     private fun searchForArtist() {
@@ -58,25 +82,11 @@ class SearchPagingFragment : BaseFragment(), SearchContract.View {
         }
     }
 
-    override fun showProgress() {
-        progressbar.visible()
-    }
+    //ADAPTER CALLBACKS
 
-    override fun hideProgress() {
-        progressbar.invisible()
-    }
-
-    override fun onArtistSearchSuccess(list: PagedList<ArtistModel>) {
-        empty_message.invisible()
-        mAdapter.submitList(list)
-    }
-
-    override fun onArtistSearchEmpty() {
-        empty_message.visible()
-    }
-
-    override fun onArtistSearchError(error: String?) {
-        showMessage(error ?: getString(R.string.search_error_default))
+    override fun onArtistSelected(artist: ArtistModel) {
+        val action = SearchPagingFragmentDirections.actionNavigationSearchToNavigationTopAlbums(artist.name)
+        navigator.goToNext(this, action)
     }
 
 }

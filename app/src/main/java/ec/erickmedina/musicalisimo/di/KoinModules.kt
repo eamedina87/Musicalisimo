@@ -29,7 +29,7 @@ val appModule = module {
 val viewModelModule = module {
     viewModel { SearchPagingViewModel(get()) }
     viewModel { MainViewModel() }
-    viewModel { AlbumListViewModel(get(), get()) }
+    viewModel { AlbumListViewModel(get(), get(), get()) }
     viewModel { AlbumDetailViewModel(get(), get()) }
 }
 

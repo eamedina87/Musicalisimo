@@ -31,8 +31,7 @@
         app:layout_constraintBottom_toBottomOf="@id/search_text"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_list_container"
+    <include layout="@layout/layout_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,28 +40,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
-    <TextView
-        android:id="@+id/empty_message"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/results_empty"
-        android:visibility="invisible"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,11 +11,11 @@ class ArtistDataSourceFactory(private val remoteClient: RemoteClient, private va
     DataSource.Factory<String, LastFmResponses.Artist>() {
 
 
-    val artistsSource = MutableLiveData<ArtistDataSource>()
+    val dataSource = MutableLiveData<ArtistDataSource>()
 
     override fun create(): DataSource<String, LastFmResponses.Artist> {
         val source = ArtistDataSource(remoteClient, artist, error)
-        artistsSource.postValue(source)
+        dataSource.postValue(source)
         return source
     }
 }

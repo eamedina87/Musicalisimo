@@ -8,6 +8,7 @@ import ec.erickmedina.data.util.mapToDBEntity
 import ec.erickmedina.data.util.mapToModel
 import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.domain.models.ArtistModel
+import ec.erickmedina.domain.models.Listing
 import ec.erickmedina.domain.models.TopAlbumModel
 import ec.erickmedina.domain.repository.Repository
 import ec.erickmedina.domain.states.AlbumFilter
@@ -46,6 +47,10 @@ class RepositoryImpl(
             null
         }
     }
+
+    override fun searchArtist(artist: String, page: String?) : Listing<ArtistModel> =
+        remoteDataSource.searchArtist(artist, page)
+
 
     override suspend fun searchArtistWithInput(input: String): ArrayList<ArtistModel> {
         val artists = ArrayList<ArtistModel>()

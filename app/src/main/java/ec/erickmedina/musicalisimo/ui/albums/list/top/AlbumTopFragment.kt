@@ -5,12 +5,16 @@ import ec.erickmedina.domain.models.TopAlbumModel
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseFragment
 import ec.erickmedina.musicalisimo.common.base.BaseViewModel
+import ec.erickmedina.musicalisimo.ui.albums.list.AlbumListViewModel
 import kotlinx.android.synthetic.main.fragment_album_list.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumTopFragment : BaseFragment(), AlbumTopContract.View {
 
 
     override fun getLayoutId(): Int = R.layout.fragment_album_list
+
+    override val mViewModel by viewModel<AlbumListViewModel>()
 
     override fun initView() {
         detail_button.setOnClickListener {
@@ -20,9 +24,6 @@ class AlbumTopFragment : BaseFragment(), AlbumTopContract.View {
         setActivityButtonUp(true)
         setActivityTitle("Album List")
     }
-
-    override val mViewModel: BaseViewModel
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
 
     override fun showProgress() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

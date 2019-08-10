@@ -2,16 +2,23 @@ package ec.erickmedina.data.entity
 
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
+import ec.erickmedina.domain.models.ImageSize
 
 
 object LastFmResponses {
+    //Pagination
+    data class Pagination(val startPage: String, val searchTerms: String)
     //Default Classes
     data class Artist(val name:String, val listeners:Long, val mbid:String,
                       val url:String, val streamable:Int, val image:Array<Image>)
     data class Image(@SerializedName("#text") val text:String, val size:String)
     //Search Artist
     data class SearchArtistResponse(val results: SearchArtistResults)
-    data class SearchArtistResults(val artistmatches: SearchArtistMatches)
+    data class SearchArtistResults(val artistmatches: SearchArtistMatches,
+                                   @SerializedName("opensearch:Query") val pagination:Pagination,
+                                   @SerializedName("opensearch:startIndex") val startIndex:String,
+                                   @SerializedName("opensearch:itemsPerPage") val pageItems: String,
+                                   @SerializedName("opensearch:totalResults") val totalResults: String)
     data class SearchArtistMatches(val artist: Array<Artist>)
     //Top ALbums
     data class TopAlbumResponse(val topalbums: TopAlbums)
@@ -32,4 +39,8 @@ object LastFmResponses {
     data class Tag(val name: String, val url:String)
     data class Wiki(val published: String, val summary: String, val content:String)
 
+}
+
+fun LastFmResponses.Artist.getImage(size: ImageSize = ImageSize.Large) : String {
+    return image.single { it.size == size.size }.text ?: ""
 }

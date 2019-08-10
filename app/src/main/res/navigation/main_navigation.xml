@@ -15,7 +15,7 @@
               android:name="ec.erickmedina.musicalisimo.ui.albums.detail.AlbumDetailFragment"
               android:label="AlbumDetailFragment"/>
 
-    <fragment android:id="@+id/navigation_search" android:name="ec.erickmedina.musicalisimo.ui.search.SearchFragment"
+    <fragment android:id="@+id/navigation_search" android:name="ec.erickmedina.musicalisimo.ui.search.SearchPagingFragment"
               android:label="SearchFragment">
         <action
             android:id="@+id/action_navigation_search_to_navigation_top_albums"

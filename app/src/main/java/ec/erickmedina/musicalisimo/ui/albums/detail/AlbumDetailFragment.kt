@@ -5,19 +5,19 @@ import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseFragment
 import ec.erickmedina.musicalisimo.common.base.BaseViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
 
     override fun getLayoutId(): Int = R.layout.fragment_album_detail
+
+    override val mViewModel by viewModel<AlbumDetailViewModel>()
 
     override fun initView() {
         setActivityTitle("Album Detail")
         setActivityButtonUp(true)
         setHasOptionsMenu(true)
     }
-
-    override val mViewModel: BaseViewModel
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
 
     override fun showProgress() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

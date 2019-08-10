@@ -47,6 +47,7 @@ dependencies {
     implementation "androidx.core:core-ktx:${libs.ktxCore}"
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:${libs.lifecycleExtensions}"
+    implementation "androidx.paging:paging-runtime-ktx:${libs.paging}"
     //JSON PARSING
     implementation "com.google.code.gson:gson:${libs.gson}"
 }

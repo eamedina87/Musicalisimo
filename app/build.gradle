@@ -75,6 +75,7 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-extensions:${libs.lifecycle}"
     implementation "androidx.navigation:navigation-fragment-ktx:${libs.navigation}"
     implementation "androidx.navigation:navigation-ui-ktx:${libs.navigation}"
+    implementation "androidx.paging:paging-runtime-ktx:${libs.paging}"
     //COROUTINES
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.coroutines}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.coroutines}"

@@ -20,6 +20,7 @@
 	<string name="menu_send">Send</string>
 	<string name="search_placeholder">Search for an artist...</string>
 	<string name="search_error_default">An error ocurred searching. Please retry.</string>
+	<string name="results_empty">No results found</string>
 
 
 </resources>

@@ -3,16 +3,10 @@ package ec.erickmedina.musicalisimo.ui.search
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import ec.erickmedina.domain.models.ArtistModel
-import ec.erickmedina.domain.states.DataState
 import ec.erickmedina.domain.states.NetworkState
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseFragment
-import ec.erickmedina.musicalisimo.common.base.BaseViewModel
-import ec.erickmedina.musicalisimo.ui.search.adapter.SearchAdapter
 import ec.erickmedina.musicalisimo.ui.search.adapter.SearchPageAdapter
 import ec.erickmedina.musicalisimo.utils.invisible
 import ec.erickmedina.musicalisimo.utils.visible
@@ -64,10 +58,6 @@ class SearchPagingFragment : BaseFragment(), SearchContract.View {
         }
     }
 
-    private fun initViewModel() {
-
-    }
-
     override fun showProgress() {
         progressbar.visible()
     }
@@ -77,11 +67,12 @@ class SearchPagingFragment : BaseFragment(), SearchContract.View {
     }
 
     override fun onArtistSearchSuccess(list: PagedList<ArtistModel>) {
+        empty_message.invisible()
         mAdapter.submitList(list)
     }
 
     override fun onArtistSearchEmpty() {
-
+        empty_message.visible()
     }
 
     override fun onArtistSearchError(error: String?) {

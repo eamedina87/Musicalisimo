@@ -1,11 +1,8 @@
 package ec.erickmedina.musicalisimo.ui.search
 
-import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
-import ec.erickmedina.data.entity.LastFmResponses
 import ec.erickmedina.domain.models.ArtistModel
 import ec.erickmedina.domain.models.Listing
-import ec.erickmedina.domain.states.DataState
 import ec.erickmedina.musicalisimo.common.base.BaseContract
 
 interface SearchContract {

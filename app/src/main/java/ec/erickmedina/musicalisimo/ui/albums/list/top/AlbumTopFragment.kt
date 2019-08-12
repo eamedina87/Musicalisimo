@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumTopFragment : BaseFragment(), AlbumTopContract.View, TopAlbumsPageAdapter.TopAlbumCallbacks {
 
-    val args: AlbumTopFragmentArgs by navArgs()
+    private val args: AlbumTopFragmentArgs by navArgs()
 
     override fun getLayoutId(): Int = R.layout.fragment_album_list
 
@@ -107,8 +107,12 @@ class AlbumTopFragment : BaseFragment(), AlbumTopContract.View, TopAlbumsPageAda
     //ADAPTER CALLBACKS
 
     override fun onAlbumSelected(album: TopAlbumModel) {
-        val action = AlbumTopFragmentDirections.actionNavigationTopAlbumsToNavigationAlbumDetail(album.name)
-        navigator.goToNext(this, action)
+        if (album.id.isNotEmpty()) {
+            val action = AlbumTopFragmentDirections.actionNavigationTopAlbumsToNavigationAlbumDetail(album.id)
+            navigator.goToNext(this, action)
+        } else {
+            showMessage(getString(R.string.album_no_id, album.name))
+        }
     }
 
 }

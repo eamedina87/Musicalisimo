@@ -1,7 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   >
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+
+	<ImageView
+		android:id="@+id/album_image"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/activity_horizontal_margin"
+		android:layout_marginEnd="@dimen/activity_horizontal_margin"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintStart_toEndOf="@id/album_title"
+		tools:src="@drawable/artist_placeholder"
+		/>
+
+	<ImageButton
+		android:id="@+id/album_fav_button"
+		android:layout_width="@dimen/album_like_size"
+		android:layout_height="@dimen/album_like_size"
+		android:background="@drawable/button_fav"
+		app:layout_constraintEnd_toEndOf="@id/album_image"
+		app:layout_constraintTop_toTopOf="@id/album_image"
+		android:layout_margin="@dimen/activity_horizontal_margin"
+		/>
+
+	<TextView
+		android:id="@+id/album_title"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/activity_horizontal_margin"
+		android:layout_margin="@dimen/activity_horizontal_margin"
+		android:textAppearance="@style/AlbumTitle"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/album_image"
+		app:layout_constraintBottom_toTopOf="@id/album_artist"
+		app:layout_constraintEnd_toStartOf="@id/album_image"
+		app:layout_constraintVertical_chainStyle="packed"
+		tools:text="Titulo del Album"
+		/>
+
+	<TextView
+		android:id="@+id/album_artist"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/AlbumArtist"
+		app:layout_constraintStart_toStartOf="@id/album_title"
+		app:layout_constraintEnd_toEndOf="@id/album_title"
+		app:layout_constraintTop_toBottomOf="@id/album_title"
+		app:layout_constraintBottom_toBottomOf="@id/album_image"
+		app:layout_constraintVertical_chainStyle="packed"
+		tools:text="Artista"
+		/>
+
+	<TextView
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:id="@+id/album_tracks_title"
+		android:text="@string/album_tracks"
+		android:textAppearance="@style/TrackTitle"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/album_image"
+		android:padding="@dimen/activity_horizontal_margin"
+		/>
+
+	<androidx.recyclerview.widget.RecyclerView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:id="@+id/album_track_list"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/album_tracks_title"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		tools:listitem="@layout/item_track"
+		/>
+
+	<ProgressBar
+		android:id="@+id/progressbar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:visibility="invisible"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

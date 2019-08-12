@@ -19,3 +19,7 @@ data class AlbumModel (
         return name.isEmpty() || artist.isEmpty() || tracks.isEmpty()
     }
 }
+
+fun AlbumModel.getImage(size: ImageSize = ImageSize.Large) : String {
+    return images.single { it.size == size.size  }.url
+}

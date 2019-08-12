@@ -10,7 +10,7 @@ interface AlbumDetailContract {
 
     interface View : BaseContract.View {
         fun onAlbumSuccess(album: AlbumModel)
-        fun onAlbumError(error:String)
+        fun onAlbumError(error:String?)
         fun onAlbumSaveSuccess()
         fun onAlbumSaveError(error: String?)
         fun onAlbumDeleteSuccess()

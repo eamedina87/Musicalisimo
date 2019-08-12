@@ -1,5 +1,6 @@
 package ec.erickmedina.musicalisimo.ui.search
 
+import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,7 +28,14 @@ class SearchPagingFragment : BaseFragment(), SearchContract.View, SearchPageAdap
         setActivityButtonUp(false)
         setupRecyclerView()
         initViewModel()
-        search_img.setOnClickListener { searchForArtist() }
+        search_img.setOnClickListener {
+            hideKeyboard()
+            searchForArtist()
+        }
+    }
+
+    private fun hideKeyboard() {
+        search_text.onEditorAction(EditorInfo.IME_ACTION_DONE)
     }
 
     private fun initViewModel() {

@@ -21,5 +21,6 @@ data class AlbumModel (
 }
 
 fun AlbumModel.getImage(size: ImageSize = ImageSize.Large) : String {
-    return images.single { it.size == size.size  }.url
+    return if (images.isEmpty()) "" else
+        images.single { it.size == size.size  }.url
 }

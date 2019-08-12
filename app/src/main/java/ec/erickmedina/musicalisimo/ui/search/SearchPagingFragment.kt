@@ -26,7 +26,34 @@ class SearchPagingFragment : BaseFragment(), SearchContract.View, SearchPageAdap
         setActivityTitle("Search")
         setActivityButtonUp(false)
         setupRecyclerView()
+        initViewModel()
         search_img.setOnClickListener { searchForArtist() }
+    }
+
+    private fun initViewModel() {
+        mViewModel.getArtist().observe(this, Observer {
+            listing ->
+            if (listing == null) {
+                onArtistSearchError(null)
+                return@Observer
+            }
+            listing.pagedList.observe(this, Observer {
+                when (it.size) {
+                    0 -> onArtistSearchEmpty()
+                    else -> onArtistSearchSuccess(it)
+                }
+            })
+            listing.dataState.observe(this, Observer {
+                when (it) {
+                    is NetworkState.Loading -> showProgress()
+                    is NetworkState.Success -> hideProgress()
+                    is NetworkState.Error -> {
+                        hideProgress()
+                        onArtistSearchError(it.error.toString())
+                    }
+                }
+            })
+        })
     }
 
     override fun showProgress() {
@@ -60,23 +87,7 @@ class SearchPagingFragment : BaseFragment(), SearchContract.View, SearchPageAdap
     private fun searchForArtist() {
         when {
             search_text.text.toString().isNotEmpty() -> {
-                val listing = mViewModel.getArtistForInput(search_text.text.toString())
-                listing.pagedList.observe(this, Observer {
-                    when (it.size) {
-                        0 -> onArtistSearchEmpty()
-                        else -> onArtistSearchSuccess(it)
-                    }
-                })
-                listing.dataState.observe(this, Observer {
-                    when (it) {
-                        is NetworkState.Loading -> showProgress()
-                        is NetworkState.Success -> hideProgress()
-                        is NetworkState.Error -> {
-                            hideProgress()
-                            onArtistSearchError(it.error.toString())
-                        }
-                    }
-                })
+                mViewModel.getArtistForInput(search_text.text.toString())
             }
             else -> search_text.requestFocus()
         }

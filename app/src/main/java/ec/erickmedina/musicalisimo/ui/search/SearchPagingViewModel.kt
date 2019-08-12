@@ -1,12 +1,29 @@
 package ec.erickmedina.musicalisimo.ui.search
 
-import ec.erickmedina.domain.repository.Repository
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import ec.erickmedina.domain.models.ArtistModel
+import ec.erickmedina.domain.models.Listing
+import ec.erickmedina.domain.usecase.SearchArtistPagingUseCase
 import ec.erickmedina.musicalisimo.common.base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class SearchPagingViewModel(private val repository: Repository) : BaseViewModel(), SearchContract.ViewModel {
+class SearchPagingViewModel(private val useCase: SearchArtistPagingUseCase) : BaseViewModel(), SearchContract.ViewModel {
 
-    override fun getArtistForInput(input: String) =
-            repository.searchArtist(input)
+    private val artist : MutableLiveData<Listing<ArtistModel>?> = MutableLiveData()
+
+    override fun getArtist(): LiveData<Listing<ArtistModel>?> = artist
+
+    override fun getArtistForInput(input: String) {
+        launch {
+            val temp = withContext(Dispatchers.IO) {
+                useCase.execute(SearchArtistPagingUseCase.Params(input))
+            }
+            artist.postValue(temp)
+        }
+    }
 
 
 }

@@ -29,13 +29,15 @@ val appModule = module {
 val viewModelModule = module {
     viewModel { SearchPagingViewModel(get()) }
     viewModel { MainViewModel() }
-    viewModel { AlbumListViewModel(get(), get(), get()) }
+    viewModel { AlbumListViewModel(get(), get()) }
     viewModel { AlbumDetailViewModel(get(), get()) }
 }
 
 val domainModule = module {
     single { SearchArtistUseCase(get()) }
+    single { SearchArtistPagingUseCase(get()) }
     single { TopAlbumsUseCase(get()) }
+    single { TopAlbumsPagingUseCase(get()) }
     single { LocalAlbumsUseCase(get()) }
     single { SaveOrDeleteAlbumUseCase(get()) }
     single { AlbumInfoUseCase(get()) }

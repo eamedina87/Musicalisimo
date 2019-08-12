@@ -24,6 +24,7 @@ class RemoteDataSourceImpl(private val remoteClient: RemoteClient) : RemoteDataS
     private val caller =  remoteClient.getRemoteCaller()
 
     override fun searchArtist(artist: String, page: String?): Listing<ArtistModel> {
+        //todo dependency injection
         val sourceFactory = ArtistDataSourceFactory(remoteClient,
             artist, artistErrorMessage)
         val dataLive = sourceFactory.map { it.mapToModel() }.toLiveData(

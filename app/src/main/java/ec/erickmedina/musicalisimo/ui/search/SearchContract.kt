@@ -1,5 +1,6 @@
 package ec.erickmedina.musicalisimo.ui.search
 
+import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import ec.erickmedina.domain.models.ArtistModel
 import ec.erickmedina.domain.models.Listing
@@ -14,6 +15,7 @@ interface SearchContract {
     }
 
     interface ViewModel : BaseContract.ViewModel {
-        fun getArtistForInput(input:String):Listing<ArtistModel>
+        fun getArtist():LiveData<Listing<ArtistModel>?>
+        fun getArtistForInput(input:String)
     }
 }

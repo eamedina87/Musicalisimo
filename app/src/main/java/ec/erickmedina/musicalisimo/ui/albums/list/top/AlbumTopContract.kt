@@ -17,8 +17,7 @@ interface AlbumTopContract {
     }
 
     interface ViewModel : BaseContract.ViewModel {
-        fun getTopAlbumsObservable(): LiveData<DataState<ArrayList<TopAlbumModel>>>
-        fun getTopAlbumsForArtist(artist:String)
-        fun getTopAlbumsFor(artist: String): Listing<TopAlbumModel>
+        fun getTopAlbumsObservable(): LiveData<Listing<TopAlbumModel>?>
+        fun getTopAlbumsFor(artist: String)
     }
 }

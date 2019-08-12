@@ -31,7 +31,35 @@ class AlbumTopFragment : BaseFragment(), AlbumTopContract.View, TopAlbumsPageAda
         setActivityButtonUp(true)
         setActivityTitle("Album List")
         setupRecyclerView()
+        initViewModel()
         getAlbumsForArtist(args.artistId)
+    }
+
+    private fun initViewModel() {
+        mViewModel.getTopAlbumsObservable().observe(this, Observer {
+            listing ->
+            if (listing == null) {
+                onTopAlbumsError(null)
+                return@Observer
+            }
+            listing.pagedList.observe(this, Observer {
+                when (it.size) {
+                    0 -> onTopAlbumsEmpty()
+                    else -> onTopAlbumsSuccess(it)
+                }
+            })
+            listing.dataState.observe(this, Observer {
+                when (it) {
+                    is NetworkState.Loading -> showProgress()
+                    is NetworkState.Success -> hideProgress()
+                    is NetworkState.Error -> {
+                        hideProgress()
+                        onTopAlbumsError(it.error.toString())
+                    }
+                }
+            })
+
+        })
     }
 
     override fun showProgress() {
@@ -73,23 +101,7 @@ class AlbumTopFragment : BaseFragment(), AlbumTopContract.View, TopAlbumsPageAda
     }
 
     private fun getAlbumsForArtist(artistId: String) {
-        val listing = mViewModel.getTopAlbumsFor(artistId)
-        listing.pagedList.observe(this, Observer {
-            when (it.size) {
-                0 -> onTopAlbumsEmpty()
-                else -> onTopAlbumsSuccess(it)
-            }
-        })
-        listing.dataState.observe(this, Observer {
-            when (it) {
-                is NetworkState.Loading -> showProgress()
-                is NetworkState.Success -> hideProgress()
-                is NetworkState.Error -> {
-                    hideProgress()
-                    onTopAlbumsError(it.error.toString())
-                }
-            }
-        })
+        mViewModel.getTopAlbumsFor(artistId)
     }
 
     //ADAPTER CALLBACKS

@@ -3,6 +3,8 @@ package ec.erickmedina.data.local.datasource
 import androidx.lifecycle.LiveData
 import ec.erickmedina.data.local.database.MusicalisimoDatabase
 import ec.erickmedina.data.local.database.entity.DatabaseEntities
+import ec.erickmedina.data.util.mapToModel
+import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.domain.states.AlbumFilter
 
 class LocalDataSourceImpl(private val database:MusicalisimoDatabase) : LocalDataSource {
@@ -18,9 +20,12 @@ class LocalDataSourceImpl(private val database:MusicalisimoDatabase) : LocalData
         }
     }
 
-    override suspend fun saveAlbum(album: DatabaseEntities.AlbumEntity): Boolean {
-        val id = mDao.insertAlbum(album)
-        return id > 0
+    override suspend fun getAlbumInfoForId(albumId: String): DatabaseEntities.AlbumEntity? =
+        mDao.getAlbumWithId(albumId)
+
+
+    override suspend fun saveAlbum(album: DatabaseEntities.AlbumEntity): Long {
+        return mDao.insertAlbum(album)
     }
 
     override suspend fun deleteAlbum(album: DatabaseEntities.AlbumEntity): Boolean {

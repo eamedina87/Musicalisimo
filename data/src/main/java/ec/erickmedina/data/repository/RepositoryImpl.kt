@@ -8,6 +8,7 @@ import ec.erickmedina.data.util.mapToDBEntity
 import ec.erickmedina.data.util.mapToModel
 import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.domain.models.ArtistModel
+import ec.erickmedina.domain.models.Listing
 import ec.erickmedina.domain.models.TopAlbumModel
 import ec.erickmedina.domain.repository.Repository
 import ec.erickmedina.domain.states.AlbumFilter
@@ -31,7 +32,9 @@ class RepositoryImpl(
 
     override suspend fun saveAlbum(album: AlbumModel): AlbumModel? {
         val result = localDataSource.saveAlbum(album.mapToDBEntity())
-        return if (result) {
+        return if (result > 0) {
+            album.localId = result
+            album.isSaved = true
             album
         } else {
             null
@@ -41,11 +44,20 @@ class RepositoryImpl(
     override suspend fun deleteAlbum(album: AlbumModel): AlbumModel? {
         val result = localDataSource.deleteAlbum(album.mapToDBEntity())
         return if (result) {
+            album.localId = 0
+            album.isSaved = false
             album
         } else {
             null
         }
     }
+
+    override fun searchArtist(artist: String, page: String?) : Listing<ArtistModel> =
+        remoteDataSource.searchArtist(artist, page)
+
+
+    override fun getTopAlbumsFor(artist: String, page: String?): Listing<TopAlbumModel> =
+        remoteDataSource.getTopAlbums(artist, page)
 
     override suspend fun searchArtistWithInput(input: String): ArrayList<ArtistModel> {
         val artists = ArrayList<ArtistModel>()
@@ -66,8 +78,13 @@ class RepositoryImpl(
     }
 
     override suspend fun getAlbumInfoForId(albumId: String): AlbumModel {
-        val album = remoteDataSource.getAlbumInfoForId(albumId, Locale.getDefault().displayLanguage)
-        return album.mapToModel()
+        val albumDB = localDataSource.getAlbumInfoForId(albumId)
+        return if (albumDB == null) {
+            val album = remoteDataSource.getAlbumInfoForId(albumId, Locale.getDefault().displayLanguage)
+            album.mapToModel()
+        } else {
+            albumDB.mapToModel()
+        }
     }
 
 }

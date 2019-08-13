@@ -30,6 +30,7 @@ class RemoteClientTest {
             assert(response.body() != null)
             val bodyResponse = response.body()!!
             assertThat(bodyResponse.results).isNotNull()
+            assertThat(bodyResponse.results.pagination).isNotNull()
             assertThat(bodyResponse.results.artistmatches).isNotNull()
             assertThat(bodyResponse.results.artistmatches.artist).isNotNull()
             val artistList = bodyResponse.results.artistmatches.artist

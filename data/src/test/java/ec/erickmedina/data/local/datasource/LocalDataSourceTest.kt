@@ -142,7 +142,7 @@ class LocalDataSourceTest {
                 mDatabase.albumDao()
                 mDao.insertAlbum(any())
             }
-            assertThat(result).isTrue()
+            assertThat(result).isGreaterThan(0)
         }
     }
 

@@ -9,13 +9,20 @@
         <action
             android:id="@+id/action_navigation_top_albums_to_navigation_album_detail"
             app:destination="@id/navigation_album_detail" />
+        <argument
+            android:name="artistId"
+            app:argType="string" />
     </fragment>
 
     <fragment android:id="@+id/navigation_album_detail"
               android:name="ec.erickmedina.musicalisimo.ui.albums.detail.AlbumDetailFragment"
-              android:label="AlbumDetailFragment"/>
+        android:label="AlbumDetailFragment">
+        <argument
+            android:name="albumId"
+            app:argType="string" />
+    </fragment>
 
-    <fragment android:id="@+id/navigation_search" android:name="ec.erickmedina.musicalisimo.ui.search.SearchFragment"
+    <fragment android:id="@+id/navigation_search" android:name="ec.erickmedina.musicalisimo.ui.search.SearchPagingFragment"
               android:label="SearchFragment">
         <action
             android:id="@+id/action_navigation_search_to_navigation_top_albums"

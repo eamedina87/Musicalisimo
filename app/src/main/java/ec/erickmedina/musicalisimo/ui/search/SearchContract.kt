@@ -1,20 +1,21 @@
 package ec.erickmedina.musicalisimo.ui.search
 
 import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
 import ec.erickmedina.domain.models.ArtistModel
-import ec.erickmedina.domain.states.DataState
+import ec.erickmedina.domain.models.Listing
 import ec.erickmedina.musicalisimo.common.base.BaseContract
 
 interface SearchContract {
 
     interface View : BaseContract.View {
-        fun onArtistSearchSuccess(list: ArrayList<ArtistModel>)
+        fun onArtistSearchSuccess(list: PagedList<ArtistModel>)
         fun onArtistSearchEmpty()
         fun onArtistSearchError(error: String?)
     }
 
     interface ViewModel : BaseContract.ViewModel {
-        fun getArtistListObservable():LiveData<DataState<ArrayList<ArtistModel>>>
+        fun getArtist():LiveData<Listing<ArtistModel>?>
         fun getArtistForInput(input:String)
     }
 }

@@ -18,13 +18,13 @@ class AlbumDetailViewModel(private val albumInfoUseCase: AlbumInfoUseCase,
 
     private val album : MutableLiveData<DataState<AlbumModel>> =
         MutableLiveData()
-    private val albumAction : MutableLiveData<Pair<AlbumAction, Boolean>> =
+    private val albumAction : MutableLiveData<Pair<AlbumAction, AlbumModel?>> =
         MutableLiveData()
 
     override fun getAlbumObservable(): LiveData<DataState<AlbumModel>> =
         album
 
-    override fun getAlbumActionObservable(): LiveData<Pair<AlbumAction, Boolean>> =
+    override fun getAlbumActionObservable(): LiveData<Pair<AlbumAction, AlbumModel?>> =
         albumAction
 
     override fun getAlbumInfoFor(albumId: String) {

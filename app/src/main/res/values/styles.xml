@@ -19,4 +19,29 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+	<style name="AlbumTitle">
+		<item name="android:textSize">28sp</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
+	<style name="AlbumArtist">
+		<item name="android:textSize">24sp</item>
+	</style>
+
+	<style name="TrackTitle">
+		<item name="android:textSize">22sp</item>
+	</style>
+
+	<style name="TrackRank">
+		<item name="android:textSize">24sp</item>
+	</style>
+
+	<style name="TrackName">
+		<item name="android:textSize">22sp</item>
+	</style>
+
+	<style name="TrackDuration">
+		<item name="android:textSize">24sp</item>
+	</style>
+
 </resources>

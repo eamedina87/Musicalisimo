@@ -1,12 +1,14 @@
 package ec.erickmedina.musicalisimo.common.base
 
 import android.os.Bundle
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import ec.erickmedina.musicalisimo.common.Navigator
 import org.koin.android.ext.android.inject
 
@@ -39,6 +41,12 @@ abstract class BaseFragment : Fragment() {
 
     protected fun setActivityButtonUp(show: Boolean) {
         getBaseActivity().displayHomeAsUpButton(show)
+    }
+
+    fun showMessage(message: String) {
+        view?.let {
+            Snackbar.make(it, message, Snackbar.LENGTH_LONG).show()
+        }
     }
 
 

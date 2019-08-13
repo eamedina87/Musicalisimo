@@ -1,9 +1,9 @@
 package ec.erickmedina.domain.usecase
 
 import com.google.common.truth.Truth.assertThat
-import ec.erickmedina.data.utils.UtilsMock
 import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.domain.repository.Repository
+import ec.erickmedina.domain.utils.UtilsMock
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -36,7 +36,7 @@ class SaveOrDeleteAlbumUseCaseTest {
             val usecase = SaveOrDeleteAlbumUseCase(repository)
             val savedAlbum = usecase.execute(SaveOrDeleteAlbumUseCase.Params(UtilsMock.getAlbumOne()))
             coVerify { repository.saveAlbum(any()) }
-            assertThat(savedAlbum).isTrue()
+            assertThat(savedAlbum).isNotNull()
         }
     }
 
@@ -46,7 +46,7 @@ class SaveOrDeleteAlbumUseCaseTest {
             val usecase = SaveOrDeleteAlbumUseCase(repository)
             val savedAlbum = usecase.execute()
             coVerify(exactly = 0) { repository.saveAlbum(any()) }
-            assertThat(savedAlbum).isFalse()
+            assertThat(savedAlbum).isNull()
         }
     }
 
@@ -56,7 +56,7 @@ class SaveOrDeleteAlbumUseCaseTest {
             val usecase = SaveOrDeleteAlbumUseCase(repository)
             val savedAlbum = usecase.execute(SaveOrDeleteAlbumUseCase.Params(UtilsMock.getAlbumEmpty()))
             coVerify(exactly = 0) { repository.saveAlbum(any()) }
-            assertThat(savedAlbum).isFalse()
+            assertThat(savedAlbum).isNull()
         }
     }
 
@@ -69,7 +69,7 @@ class SaveOrDeleteAlbumUseCaseTest {
             val usecase = SaveOrDeleteAlbumUseCase(mRepository)
             val savedAlbum = usecase.execute(SaveOrDeleteAlbumUseCase.Params(UtilsMock.getAlbumEmpty()))
             coVerify(exactly = 0) { mRepository.saveAlbum(any()) }
-            assertThat(savedAlbum).isFalse()
+            assertThat(savedAlbum).isNull()
         }
     }
 
@@ -80,7 +80,7 @@ class SaveOrDeleteAlbumUseCaseTest {
             val deletedAlbum = usecase.execute(SaveOrDeleteAlbumUseCase.Params(UtilsMock.getAlbumOne(), true))
             coVerify { repository.deleteAlbum(any()) }
             coVerify(exactly = 0) { repository.saveAlbum(any()) }
-            assertThat(deletedAlbum).isTrue()
+            assertThat(deletedAlbum).isNotNull()
         }
     }
 
@@ -94,7 +94,7 @@ class SaveOrDeleteAlbumUseCaseTest {
                 repository.saveAlbum(any())
                 repository.deleteAlbum(any())
             }
-            assertThat(savedAlbum).isFalse()
+            assertThat(savedAlbum).isNull()
         }
     }
 
@@ -110,7 +110,7 @@ class SaveOrDeleteAlbumUseCaseTest {
                 mRepository.saveAlbum(any())
                 mRepository.deleteAlbum(any())
             }
-            assertThat(savedAlbum).isFalse()
+            assertThat(savedAlbum).isNull()
         }
     }
 

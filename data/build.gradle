@@ -49,6 +49,7 @@ dependencies {
     implementation "androidx.core:core-ktx:${libs.ktxCore}"
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:${libs.lifecycleExtensions}"
+    implementation "androidx.paging:paging-runtime-ktx:${libs.paging}"
     //JSON PARSING
     //implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
     implementation "com.google.code.gson:gson:${libs.gson}"
@@ -61,6 +62,7 @@ dependencies {
     //REMOTE - API
     implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
     implementation "com.squareup.retrofit2:converter-moshi:${libs.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${libs.retrofitCoroutines}"
     implementation "com.squareup.okhttp3:logging-interceptor:${libs.okhttp}"
     //REMOTE INTERCEPTOR

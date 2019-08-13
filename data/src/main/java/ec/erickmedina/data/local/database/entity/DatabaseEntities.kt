@@ -8,9 +8,9 @@ object DatabaseEntities {
 
     @Entity(tableName = "albumJson")
     data class AlbumEntity(@PrimaryKey(autoGenerate = true) var id: Long, val artist: String,
-                           val name: String, val playcount: Long, val album: LastFmResponses.Album) {
+                           val name: String, val playcount: Long, val remoteId: String, val album: LastFmResponses.Album) {
 
-        constructor(entity: LastFmResponses.Album) : this(0, entity.artist, entity.name, entity.playcount, entity)
+        constructor(entity: LastFmResponses.Album) : this(0, entity.artist, entity.name, entity.playcount, entity.mbid, entity)
 
     }
 

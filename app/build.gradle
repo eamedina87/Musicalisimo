@@ -6,6 +6,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 def libs = rootProject.ext.libraries
 def config = rootProject.ext.configuration
 
@@ -38,6 +40,16 @@ android {
             includeAndroidResources = true
         }
     }
+    
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
 }
 
 dependencies {
@@ -61,7 +73,7 @@ dependencies {
     androidTestImplementation "androidx.test:runner:${libs.androidTestRunner}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${libs.espresso}"
     //JSON PARSING
-    implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
+    //implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
     //ANDROID + KOTLIN
     implementation "androidx.legacy:legacy-support-v4:${libs.androidxLegacy}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -75,6 +87,7 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-extensions:${libs.lifecycle}"
     implementation "androidx.navigation:navigation-fragment-ktx:${libs.navigation}"
     implementation "androidx.navigation:navigation-ui-ktx:${libs.navigation}"
+    implementation "androidx.paging:paging-runtime-ktx:${libs.paging}"
     //COROUTINES
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.coroutines}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.coroutines}"

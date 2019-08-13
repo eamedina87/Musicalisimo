@@ -18,6 +18,13 @@
 	<string name="menu_tools">Tools</string>
 	<string name="menu_share">Share</string>
 	<string name="menu_send">Send</string>
+	<string name="search_placeholder">Search for an artist</string>
+	<string name="search_error_default">An error occurred. Please retry.</string>
+	<string name="results_empty">No results found</string>
+	<string name="album_save_success">Album saved!</string>
+	<string name="album_delete_success">Album deleted</string>
+	<string name="album_tracks">Tracks</string>
+	<string name="album_no_id">No info for album: %s</string>
 
 
 </resources>

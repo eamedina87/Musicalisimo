@@ -10,7 +10,7 @@ interface AlbumDetailContract {
 
     interface View : BaseContract.View {
         fun onAlbumSuccess(album: AlbumModel)
-        fun onAlbumError(error:String)
+        fun onAlbumError(error:String?)
         fun onAlbumSaveSuccess()
         fun onAlbumSaveError(error: String?)
         fun onAlbumDeleteSuccess()
@@ -19,7 +19,7 @@ interface AlbumDetailContract {
 
     interface ViewModel : BaseContract.ViewModel {
         fun getAlbumObservable():LiveData<DataState<AlbumModel>>
-        fun getAlbumActionObservable():LiveData<Pair<AlbumAction, Boolean>>
+        fun getAlbumActionObservable():LiveData<Pair<AlbumAction, AlbumModel?>>
         fun getAlbumInfoFor(albumId:String)
         fun saveAlbum(album:AlbumModel)
         fun deleteAlbum(album: AlbumModel)

@@ -46,8 +46,8 @@ class RepositoryImplTest {
 
         localDataSource = mockk {
             coEvery { getSavedAlbums(any()) } coAnswers { UtilsMock.getMockedLiveDatabaseAlbumList() }
-            coEvery { getAlbumInfoForId(any()) } coAnswers { UtilsMock.getAlbumThree().mapToModel() }
-            coEvery { saveAlbum(any()) } returns true
+            coEvery { getAlbumInfoForId(any()) } coAnswers { UtilsMock.getAlbumThree() }
+            coEvery { saveAlbum(any()) } returns 1
             coEvery { deleteAlbum(any()) } returns true
         }
     }
@@ -83,7 +83,7 @@ class RepositoryImplTest {
     @Test
     fun `save album failure`() {
         val mLocalDataSource = mockk<LocalDataSource> {
-            coEvery { saveAlbum(any()) } returns false
+            coEvery { saveAlbum(any()) } returns 1
         }
         runBlocking {
             val repository = RepositoryImpl(mLocalDataSource, remoteDataSource)

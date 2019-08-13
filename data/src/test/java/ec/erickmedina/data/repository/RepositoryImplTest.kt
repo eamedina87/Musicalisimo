@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import ec.erickmedina.data.local.datasource.LocalDataSource
 import ec.erickmedina.data.remote.datasource.RemoteDataSource
+import ec.erickmedina.data.util.mapToModel
 import ec.erickmedina.data.utils.UtilsAssertion
 import ec.erickmedina.data.utils.UtilsMock
 import ec.erickmedina.domain.exceptions.NoConnectivityException
@@ -45,6 +46,7 @@ class RepositoryImplTest {
 
         localDataSource = mockk {
             coEvery { getSavedAlbums(any()) } coAnswers { UtilsMock.getMockedLiveDatabaseAlbumList() }
+            coEvery { getAlbumInfoForId(any()) } coAnswers { UtilsMock.getAlbumThree().mapToModel() }
             coEvery { saveAlbum(any()) } returns true
             coEvery { deleteAlbum(any()) } returns true
         }
@@ -179,18 +181,20 @@ class RepositoryImplTest {
     }
 
     @Test
-    fun `get album info success`() {
+    fun `get album local info success`() {
         runBlocking {
+
             val repository = RepositoryImpl(localDataSource, remoteDataSource)
             val album = repository.getAlbumInfoForId("")
-            coVerify { remoteDataSource.getAlbumInfoForId(any(), any()) }
+            coVerify { localDataSource.getAlbumInfoForId(any()) }
+            coVerify (exactly = 0){ remoteDataSource.getAlbumInfoForId(any(), any()) }
             assertThat(album).isNotNull()
             UtilsAssertion.assertAlbumModel(album)
         }
     }
 
     @Test
-    fun `get album info remote exception`() {
+    fun `get album local info remote exception`() {
         val mRemoteDataSource = mockk<RemoteDataSource> {
             coEvery { getAlbumInfoForId(any(), any()) } throws NoConnectivityException("No internet")
         }
@@ -198,7 +202,46 @@ class RepositoryImplTest {
             val repository = RepositoryImpl(localDataSource, mRemoteDataSource)
             try {
                 repository.getAlbumInfoForId("")
-                coVerify { mRemoteDataSource.getAlbumInfoForId(any(), any()) }
+                coVerify { localDataSource.getAlbumInfoForId(any()) }
+                coVerify (exactly = 0) { mRemoteDataSource.getAlbumInfoForId(any(), any()) }
+            } catch (e:Exception) {
+                assertThat(e is NoConnectivityException)
+            }
+        }
+    }
+
+    @Test
+    fun `get album remote info success`() {
+        val mLocalDataSource = mockk<LocalDataSource> {
+            coEvery { getAlbumInfoForId(any()) } returns null
+        }
+        runBlocking {
+
+            val repository = RepositoryImpl(mLocalDataSource, remoteDataSource)
+            val album = repository.getAlbumInfoForId("")
+            coVerify {
+                mLocalDataSource.getAlbumInfoForId(any())
+                remoteDataSource.getAlbumInfoForId(any(), any()) }
+            assertThat(album).isNotNull()
+            UtilsAssertion.assertAlbumModel(album)
+        }
+    }
+
+    @Test
+    fun `get album remote info remote exception`() {
+        val mLocalDataSource = mockk<LocalDataSource> {
+            coEvery { getAlbumInfoForId(any()) } returns null
+        }
+        val mRemoteDataSource = mockk<RemoteDataSource> {
+            coEvery { getAlbumInfoForId(any(), any()) } throws NoConnectivityException("No internet")
+        }
+        runBlocking {
+            val repository = RepositoryImpl(mLocalDataSource, mRemoteDataSource)
+            try {
+                repository.getAlbumInfoForId("")
+                coVerify {
+                    mLocalDataSource.getAlbumInfoForId(any())
+                    mRemoteDataSource.getAlbumInfoForId(any(), any()) }
             } catch (e:Exception) {
                 assertThat(e is NoConnectivityException)
             }

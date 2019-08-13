@@ -3,11 +3,11 @@ package ec.erickmedina.domain.usecase
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.google.common.truth.Truth.assertThat
-import ec.erickmedina.data.utils.UtilsAssertion
-import ec.erickmedina.data.utils.UtilsMock
 import ec.erickmedina.domain.repository.Repository
 import ec.erickmedina.domain.states.AlbumFilter
 import ec.erickmedina.domain.states.DataState
+import ec.erickmedina.domain.utils.UtilsAssertion
+import ec.erickmedina.domain.utils.UtilsMock
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

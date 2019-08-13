@@ -6,16 +6,14 @@ import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.domain.states.DataState
 import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.common.base.BaseFragment
-import ec.erickmedina.musicalisimo.common.base.BaseViewModel
 import ec.erickmedina.musicalisimo.ui.albums.list.AlbumListViewModel
 import ec.erickmedina.musicalisimo.ui.albums.list.local.adapter.LocalAlbumsAdapter
 import ec.erickmedina.musicalisimo.utils.invisible
 import ec.erickmedina.musicalisimo.utils.visible
-import kotlinx.android.synthetic.main.fragment_album_list.*
 import kotlinx.android.synthetic.main.layout_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View {
+class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View, LocalAlbumsAdapter.LocalAlbumsCallbacks {
 
     override fun getLayoutId(): Int = R.layout.fragment_album_list
 
@@ -25,11 +23,16 @@ class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View {
     override fun initView() {
         setActivityButtonUp(false)
         setActivityTitle("Album List")
-        initVewModel()
+        initViewModel()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         mViewModel.getLocalAlbums()
     }
 
-    private fun initVewModel() {
+    private fun initViewModel() {
         mViewModel.getLocalAlbumsObservable().observe(this, Observer {
             state ->
             when (state) {
@@ -61,7 +64,7 @@ class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View {
     override fun onLocalAlbumsLoaded(albumList: ArrayList<AlbumModel>) {
         empty_message.invisible()
         if (mAdapter == null) {
-            mAdapter = LocalAlbumsAdapter(albumList)
+            mAdapter = LocalAlbumsAdapter(albumList, this)
             val layoutManager = GridLayoutManager(context, 2)
             list_container.adapter = mAdapter
             list_container.layoutManager = layoutManager
@@ -78,4 +81,10 @@ class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View {
         showMessage(error ?: getString(R.string.search_error_default))
     }
 
+    //ADAPTER CALLBACKS
+
+    override fun onAlbumClicked(album: AlbumModel) {
+        val action = AlbumLocalFragmentDirections.actionNavigationLocalAlbumsToNavigationAlbumDetail(album.remoteId)
+        navigator.goToNext(this, action)
+    }
 }

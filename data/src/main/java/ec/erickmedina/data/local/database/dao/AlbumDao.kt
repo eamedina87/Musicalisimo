@@ -8,6 +8,7 @@ import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import ec.erickmedina.data.entity.LastFmResponses
 import ec.erickmedina.data.local.database.entity.DatabaseEntities
+import ec.erickmedina.domain.models.AlbumModel
 
 @Dao
 interface AlbumDao {
@@ -29,5 +30,8 @@ interface AlbumDao {
 
     @Query("Select * from albumJson order by playcount asc")
     fun getAllAlbumsByPlaycount():LiveData<List<DatabaseEntities.AlbumEntity>>
+
+    @Query("Select * from albumJson where remoteId=:albumId")
+    fun getAlbumWithId(albumId: String): DatabaseEntities.AlbumEntity
 
 }

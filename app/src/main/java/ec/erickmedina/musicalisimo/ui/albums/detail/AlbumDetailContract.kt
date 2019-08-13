@@ -19,7 +19,7 @@ interface AlbumDetailContract {
 
     interface ViewModel : BaseContract.ViewModel {
         fun getAlbumObservable():LiveData<DataState<AlbumModel>>
-        fun getAlbumActionObservable():LiveData<Pair<AlbumAction, Boolean>>
+        fun getAlbumActionObservable():LiveData<Pair<AlbumAction, AlbumModel?>>
         fun getAlbumInfoFor(albumId:String)
         fun saveAlbum(album:AlbumModel)
         fun deleteAlbum(album: AlbumModel)

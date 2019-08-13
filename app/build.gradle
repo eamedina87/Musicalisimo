@@ -73,7 +73,7 @@ dependencies {
     androidTestImplementation "androidx.test:runner:${libs.androidTestRunner}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${libs.espresso}"
     //JSON PARSING
-    implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
+    //implementation "com.squareup.moshi:moshi-kotlin:${libs.moshi}"
     //ANDROID + KOTLIN
     implementation "androidx.legacy:legacy-support-v4:${libs.androidxLegacy}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

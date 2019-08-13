@@ -5,7 +5,9 @@ import ec.erickmedina.data.local.database.entity.DatabaseEntities
 import ec.erickmedina.domain.models.*
 
 fun DatabaseEntities.AlbumEntity.mapToModel():AlbumModel {
-    return album.mapToModel()
+    val albumModel = album.mapToModel()
+    albumModel.localId = id
+    return albumModel
 }
 
 fun LastFmResponses.Album.mapToModel() : AlbumModel {
@@ -53,24 +55,21 @@ fun LastFmResponses.TopAlbum.mapToModel() : TopAlbumModel {
 }
 
 fun AlbumModel.mapToDBEntity() : DatabaseEntities.AlbumEntity {
-    return DatabaseEntities.AlbumEntity(localId, artist, name, playcount, mapToRemoteEntity())
+    return DatabaseEntities.AlbumEntity(localId, artist, name, playcount, remoteId, mapToRemoteEntity())
 }
 
 fun AlbumModel.mapToRemoteEntity() : LastFmResponses.Album {
-    val image = arrayOf<LastFmResponses.Image>()
-    val trackEntity = arrayOf<LastFmResponses.Track>()
+    val image = images.map { it.mapToEntity() }.toTypedArray()
+    val trackEntity = tracks.map { it.mapToEntity() }.toTypedArray()
     val tracksEntity = LastFmResponses.Tracks(trackEntity)
-    this.tracks?.forEach {
-        trackEntity.plus(it.mapToEntity())
-    }
-    val tagEntity = arrayOf<LastFmResponses.Tag>()
+    val tagEntity = tags.map { it.mapToEntity() }.toTypedArray()
     val tagsEntity = LastFmResponses.Tags(tagEntity)
-    this.tags?.forEach {
-        tagEntity.plus(it.mapToEntity())
-    }
     return LastFmResponses.Album(name, artist, remoteId, "", image, listeners, playcount,
-        tracksEntity, tagsEntity, LastFmResponses.Wiki(publication, summary, description))
+        tracksEntity, tagsEntity, LastFmResponses.Wiki(publication, summary, description), isSaved)
 }
+
+fun ImageModel.mapToEntity() : LastFmResponses.Image =
+    LastFmResponses.Image(url, size)
 
 fun TagModel.mapToEntity() : LastFmResponses.Tag =
     LastFmResponses.Tag(name, "")

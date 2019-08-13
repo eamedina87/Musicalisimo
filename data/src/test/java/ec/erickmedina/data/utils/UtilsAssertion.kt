@@ -70,8 +70,8 @@ class UtilsAssertion {
                     }
                 }
                 Truth.assertThat(tags).isNotNull()
-                Truth.assertThat(tags.tag).isNotNull()
-                tags.tag.forEach {
+                Truth.assertThat(tags?.tag).isNotNull()
+                tags?.tag?.forEach {
                     Truth.assertThat(it).isNotNull()
                     with(it) {
                         Truth.assertThat(name).isNotEmpty()
@@ -79,7 +79,7 @@ class UtilsAssertion {
                     }
                 }
                 Truth.assertThat(wiki).isNotNull()
-                with(wiki) {
+                with(wiki!!) {
                     Truth.assertThat(content).isNotEmpty()
                     Truth.assertThat(published).isNotEmpty()
                     Truth.assertThat(summary).isNotEmpty()

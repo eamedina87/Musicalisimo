@@ -32,7 +32,9 @@ class RepositoryImpl(
 
     override suspend fun saveAlbum(album: AlbumModel): AlbumModel? {
         val result = localDataSource.saveAlbum(album.mapToDBEntity())
-        return if (result) {
+        return if (result > 0) {
+            album.localId = result
+            album.isSaved = true
             album
         } else {
             null
@@ -42,6 +44,8 @@ class RepositoryImpl(
     override suspend fun deleteAlbum(album: AlbumModel): AlbumModel? {
         val result = localDataSource.deleteAlbum(album.mapToDBEntity())
         return if (result) {
+            album.localId = 0
+            album.isSaved = false
             album
         } else {
             null
@@ -74,8 +78,13 @@ class RepositoryImpl(
     }
 
     override suspend fun getAlbumInfoForId(albumId: String): AlbumModel {
-        val album = remoteDataSource.getAlbumInfoForId(albumId, Locale.getDefault().displayLanguage)
-        return album.mapToModel()
+        val albumDB = localDataSource.getAlbumInfoForId(albumId)
+        return if (albumDB == null) {
+            val album = remoteDataSource.getAlbumInfoForId(albumId, Locale.getDefault().displayLanguage)
+            album.mapToModel()
+        } else {
+            albumDB.mapToModel()
+        }
     }
 
 }

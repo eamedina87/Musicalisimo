@@ -49,14 +49,20 @@ class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
         mViewModel.getAlbumActionObservable().observe(this, Observer {
             pair ->
             val action = pair.first
-            val success = pair.second
+            val album = pair.second
             when (action) {
                 AlbumAction.Save -> {
-                    if (success) onAlbumSaveSuccess()
+                    if (album != null) {
+                        mAlbum = album
+                        onAlbumSaveSuccess()
+                    }
                     else onAlbumSaveError(null)
                 }
                 AlbumAction.Delete -> {
-                    if (success) onAlbumDeleteSuccess()
+                    if (album != null) {
+                        mAlbum = album
+                        onAlbumDeleteSuccess()
+                    }
                     else onAlbumDeleteError(null)
                 }
             }
@@ -95,6 +101,7 @@ class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
         album_artist.text = album.artist
         ImageLoader.loadInImageView(album.getImage(), album_image)
         setTracks(album.tracks)
+        album_fav_button.isSelected = album.isSaved
     }
 
     private fun setTracks(tracks: ArrayList<TrackModel>) {

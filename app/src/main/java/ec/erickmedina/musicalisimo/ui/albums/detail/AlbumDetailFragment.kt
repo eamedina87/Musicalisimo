@@ -101,6 +101,7 @@ class AlbumDetailFragment : BaseFragment(), AlbumDetailContract.View {
         album_artist.text = album.artist
         ImageLoader.loadInImageView(album.getImage(), album_image)
         setTracks(album.tracks)
+        album_fav_button.visible()
         album_fav_button.isSelected = album.isSaved
     }
 

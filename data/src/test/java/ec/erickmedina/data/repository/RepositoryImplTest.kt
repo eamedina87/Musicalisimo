@@ -76,14 +76,14 @@ class RepositoryImplTest {
             coVerify {
                 localDataSource.saveAlbum(any())
             }
-            assertThat(result).isEqualTo(UtilsMock.getAlbumOneModel())
+            assertThat(result!!.name).isEqualTo(UtilsMock.getAlbumOneModel().name)
         }
     }
 
     @Test
     fun `save album failure`() {
         val mLocalDataSource = mockk<LocalDataSource> {
-            coEvery { saveAlbum(any()) } returns 1
+            coEvery { saveAlbum(any()) } returns 0
         }
         runBlocking {
             val repository = RepositoryImpl(mLocalDataSource, remoteDataSource)

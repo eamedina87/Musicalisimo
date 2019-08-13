@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ec.erickmedina.domain.models.AlbumModel
 import ec.erickmedina.domain.models.getImage
@@ -12,9 +13,8 @@ import ec.erickmedina.musicalisimo.R
 import ec.erickmedina.musicalisimo.utils.ImageLoader
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class LocalAlbumsAdapter(private val albums: ArrayList<AlbumModel>,
-                         private val callback: LocalAlbumsCallbacks) :
-    RecyclerView.Adapter<LocalAlbumsAdapter.ViewHolder>() {
+class LocalAlbumsAdapter(private val callback: LocalAlbumsCallbacks) :
+    ListAdapter<AlbumModel, LocalAlbumsAdapter.ViewHolder>(AlbumDiff()) {
 
     interface LocalAlbumsCallbacks {
         fun onAlbumClicked(album:AlbumModel)
@@ -25,19 +25,9 @@ class LocalAlbumsAdapter(private val albums: ArrayList<AlbumModel>,
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int =
-        albums.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(albums[position])
-        holder.itemView.setOnClickListener { callback.onAlbumClicked(albums[position]) }
-    }
-
-    fun updateList(albumList: ArrayList<AlbumModel>) {
-        val diffResult = DiffUtil.calculateDiff(AlbumDiff(albumList, albums))
-        diffResult.dispatchUpdatesTo(this)
-        albums.clear()
-        albums.addAll(albumList)
+        holder.bindItem(getItem(position))
+        holder.itemView.setOnClickListener { callback.onAlbumClicked(getItem(position)) }
     }
 
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder (itemView) {
@@ -47,25 +37,14 @@ class LocalAlbumsAdapter(private val albums: ArrayList<AlbumModel>,
         }
     }
 
+    class AlbumDiff : DiffUtil.ItemCallback<AlbumModel>() {
+        override fun areItemsTheSame(oldItem: AlbumModel, newItem: AlbumModel): Boolean =
+            oldItem.name == newItem.name
 
-    class AlbumDiff(val oldItems:ArrayList<AlbumModel>,
-                    val newItems:ArrayList<AlbumModel>) : DiffUtil.Callback() {
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-            oldItems[oldItemPosition].name == newItems[newItemPosition].name
-
-
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-            oldItems[oldItemPosition].name == newItems[newItemPosition].name &&
-                    oldItems[oldItemPosition].artist == newItems[newItemPosition].artist &&
-                    oldItems[oldItemPosition].tracks.size == newItems[newItemPosition].tracks.size
-
-
-        override fun getOldListSize(): Int =
-            oldItems.size
-
-
-        override fun getNewListSize(): Int =
-            newItems.size
+        override fun areContentsTheSame(oldItem: AlbumModel, newItem: AlbumModel): Boolean =
+            oldItem.name == newItem.name &&
+                    oldItem.artist == newItem.artist &&
+                    oldItem.tracks.size == newItem.tracks.size
 
     }
 }

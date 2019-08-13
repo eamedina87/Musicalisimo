@@ -17,14 +17,14 @@ class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View, LocalAlbumsA
 
     override fun getLayoutId(): Int = R.layout.fragment_album_list
 
-    private var mAdapter: LocalAlbumsAdapter? = null
+    private var mAdapter: LocalAlbumsAdapter = LocalAlbumsAdapter(this)
     override val mViewModel by viewModel<AlbumListViewModel>()
 
     override fun initView() {
         setActivityButtonUp(false)
         setActivityTitle("Album List")
+        setupRecyclerView()
         initViewModel()
-
     }
 
     override fun onResume() {
@@ -63,14 +63,13 @@ class AlbumLocalFragment : BaseFragment(), AlbumLocalContract.View, LocalAlbumsA
 
     override fun onLocalAlbumsLoaded(albumList: ArrayList<AlbumModel>) {
         empty_message.invisible()
-        if (mAdapter == null) {
-            mAdapter = LocalAlbumsAdapter(albumList, this)
-            val layoutManager = GridLayoutManager(context, 2)
-            list_container.adapter = mAdapter
-            list_container.layoutManager = layoutManager
-        } else {
-            mAdapter?.updateList(albumList)
-        }
+        mAdapter.submitList(albumList)
+    }
+
+    private fun setupRecyclerView() {
+        val layoutManager = GridLayoutManager(context, 2)
+        list_container.adapter = mAdapter
+        list_container.layoutManager = layoutManager
     }
 
     override fun onLocalAlbumsEmpty() {

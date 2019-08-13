@@ -24,6 +24,7 @@
 		android:layout_width="@dimen/album_like_size"
 		android:layout_height="@dimen/album_like_size"
 		android:background="@drawable/button_fav"
+		android:visibility="invisible"
 		app:layout_constraintEnd_toEndOf="@id/album_image"
 		app:layout_constraintTop_toTopOf="@id/album_image"
 		android:layout_margin="@dimen/activity_horizontal_margin"
